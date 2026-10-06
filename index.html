@@ -1,0 +1,4003 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      GATE Biotechnology (BT) Marks Calculator & Live CBT Mock Test Simulator
+    </title>
+    <meta
+      name="description"
+      content="Official GATE Biotechnology (BT) Marks Calculator and interactive CBT Mock Test simulator with official marking scheme, 180-min timer, TCS iON palette, full question statements, and answer key matching."
+    />
+    <meta
+      name="keywords"
+      content="GATE Biotechnology Marks Calculator, GATE BT Mock Test, GATE BT 2021, GATE BT 2024, GATE BT 2026, GATE BT 2027, CBT Exam Simulator"
+    />
+    <style>
+      :root {
+        --primary-50: #eff6ff;
+        --primary-100: #dbeafe;
+        --primary-500: #3b82f6;
+        --primary-600: #2563eb;
+        --primary-700: #1d4ed8;
+        --primary-800: #1e40af;
+        --primary-900: #1e3a8a;
+
+        --slate-50: #f8fafc;
+        --slate-100: #f1f5f9;
+        --slate-200: #e2e8f0;
+        --slate-300: #cbd5e1;
+        --slate-400: #94a3b8;
+        --slate-500: #64748b;
+        --slate-600: #475569;
+        --slate-700: #334155;
+        --slate-800: #1e293b;
+        --slate-900: #0f172a;
+
+        --emerald-50: #ecfdf5;
+        --emerald-500: #10b981;
+        --emerald-600: #059669;
+        --emerald-700: #047857;
+
+        --rose-50: #fff1f2;
+        --rose-500: #f43f5e;
+        --rose-600: #e11d48;
+        --rose-700: #be123c;
+
+        --amber-50: #fffbeb;
+        --amber-500: #f59e0b;
+        --amber-600: #d97706;
+        --amber-700: #b45309;
+
+        --purple-500: #8b5cf6;
+        --purple-600: #7c3aed;
+        --purple-700: #6d28d9;
+
+        --font-sans:
+          system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        --font-mono:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        --radius-sm: 6px;
+        --radius-md: 10px;
+        --radius-lg: 14px;
+        --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: var(--font-sans);
+        background-color: var(--slate-100);
+        color: var(--slate-800);
+        line-height: 1.5;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .app-container {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 1rem 1.25rem 3rem 1.25rem;
+        width: 100%;
+        flex: 1;
+      }
+
+      /* HEADER */
+      header.exam-header {
+        background: linear-gradient(
+          135deg,
+          var(--primary-900) 0%,
+          var(--primary-800) 50%,
+          #1e293b 100%
+        );
+        color: #ffffff;
+        padding: 1.5rem;
+        border-radius: var(--radius-lg);
+        margin-bottom: 1.25rem;
+        box-shadow: var(--shadow-md);
+        position: relative;
+      }
+
+      .header-top {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .brand-title {
+        font-size: 1.6rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      .brand-title .badge-bt {
+        background: #38bdf8;
+        color: var(--slate-900);
+        font-size: 0.8rem;
+        font-weight: 800;
+        padding: 0.2rem 0.6rem;
+        border-radius: var(--radius-sm);
+        text-transform: uppercase;
+      }
+
+      .header-subtitle {
+        color: var(--primary-100);
+        font-size: 0.9rem;
+        max-width: 820px;
+      }
+
+      /* CONTROLS BAR */
+      .controls-bar {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: var(--radius-md);
+        padding: 0.75rem 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .control-group {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+
+      .control-label {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--slate-200);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      select.custom-select {
+        background: #ffffff;
+        color: var(--slate-800);
+        border: 1px solid var(--slate-300);
+        padding: 0.45rem 1rem;
+        border-radius: var(--radius-sm);
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        min-width: 170px;
+      }
+
+      .segmented-control {
+        display: inline-flex;
+        background: rgba(15, 23, 42, 0.4);
+        padding: 3px;
+        border-radius: var(--radius-sm);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+
+      .segmented-btn {
+        background: transparent;
+        border: none;
+        color: var(--slate-300);
+        padding: 0.4rem 0.9rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        border-radius: calc(var(--radius-sm) - 2px);
+        cursor: pointer;
+        transition: all 0.15s ease;
+        white-space: nowrap;
+      }
+
+      .segmented-btn.active {
+        background: #ffffff;
+        color: var(--primary-900);
+        box-shadow: var(--shadow-sm);
+      }
+
+      /* MAIN APP WORKFLOW SELECTOR TABS */
+      .app-experience-nav {
+        display: flex;
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
+        flex-wrap: wrap;
+      }
+
+      .experience-btn {
+        flex: 1;
+        min-width: 260px;
+        padding: 0.85rem 1.25rem;
+        border-radius: var(--radius-md);
+        border: 2px solid var(--slate-200);
+        background: #ffffff;
+        color: var(--slate-700);
+        font-size: 0.95rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .experience-btn:hover {
+        border-color: var(--primary-400);
+        background: var(--primary-50);
+      }
+
+      .experience-btn.active {
+        border-color: var(--primary-600);
+        background: var(--primary-600);
+        color: #ffffff;
+        box-shadow: var(--shadow-md);
+      }
+
+      /* CBT MOCK TEST INTERFACE */
+      .cbt-container {
+        display: grid;
+        grid-template-columns: 1fr 340px;
+        gap: 1.25rem;
+        align-items: start;
+        margin-bottom: 1.5rem;
+      }
+
+      @media (max-width: 1024px) {
+        .cbt-container {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .cbt-test-panel {
+        background: #ffffff;
+        border: 1px solid var(--slate-200);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-sm);
+        display: flex;
+        flex-direction: column;
+        min-height: 580px;
+      }
+
+      .cbt-top-bar {
+        background: var(--slate-800);
+        color: #ffffff;
+        padding: 0.75rem 1.25rem;
+        border-top-left-radius: var(--radius-lg);
+        border-top-right-radius: var(--radius-lg);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      .cbt-section-tabs {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .cbt-sec-tab {
+        background: rgba(255, 255, 255, 0.15);
+        border: none;
+        color: #ffffff;
+        padding: 0.35rem 0.85rem;
+        border-radius: var(--radius-sm);
+        font-size: 0.8rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .cbt-sec-tab.active {
+        background: var(--primary-500);
+        color: #ffffff;
+      }
+
+      .cbt-timer-box {
+        background: #0f172a;
+        border: 1px solid #334155;
+        padding: 0.35rem 0.85rem;
+        border-radius: var(--radius-sm);
+        font-family: var(--font-mono);
+        font-size: 1.05rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #38bdf8;
+      }
+
+      .cbt-timer-box.warning {
+        color: #f59e0b;
+        animation: pulse 1s infinite;
+      }
+
+      .cbt-timer-box.danger {
+        color: #f43f5e;
+        animation: pulse 0.5s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.6;
+        }
+      }
+
+      .cbt-q-header {
+        padding: 0.85rem 1.25rem;
+        border-bottom: 1px solid var(--slate-200);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        background: var(--slate-50);
+      }
+
+      .cbt-q-body {
+        padding: 1.5rem 1.25rem;
+        flex: 1;
+        overflow-y: auto;
+      }
+
+      .cbt-q-text {
+        font-size: 1.05rem;
+        line-height: 1.6;
+        color: var(--slate-900);
+        margin-bottom: 1.25rem;
+      }
+
+      .cbt-options-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .cbt-option-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        border: 1.5px solid var(--slate-200);
+        border-radius: var(--radius-md);
+        background: #ffffff;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        font-size: 0.95rem;
+      }
+
+      .cbt-option-row:hover {
+        border-color: var(--primary-400);
+        background: var(--primary-50);
+      }
+
+      .cbt-option-row.selected {
+        border-color: var(--primary-600);
+        background: #eff6ff;
+      }
+
+      .cbt-option-row input {
+        margin-top: 0.25rem;
+        accent-color: var(--primary-600);
+      }
+
+      .cbt-actions-bar {
+        padding: 1rem 1.25rem;
+        border-top: 1px solid var(--slate-200);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        background: var(--slate-50);
+        border-bottom-left-radius: var(--radius-lg);
+        border-bottom-right-radius: var(--radius-lg);
+      }
+
+      /* TCS iON QUESTION PALETTE SIDEBAR */
+      .cbt-palette-panel {
+        background: #ffffff;
+        border: 1px solid var(--slate-200);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-sm);
+        padding: 1rem;
+      }
+
+      .palette-legend-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        font-size: 0.72rem;
+        font-weight: 700;
+      }
+
+      .p-legend-item {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      .p-icon {
+        width: 22px;
+        height: 22px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        color: #ffffff;
+        font-weight: 700;
+      }
+
+      .p-answered {
+        background-color: #10b981;
+      }
+      .p-not-answered {
+        background-color: #ef4444;
+      }
+      .p-not-visited {
+        background-color: #94a3b8;
+      }
+      .p-review {
+        background-color: #8b5cf6;
+      }
+      .p-answered-review {
+        background-color: #8b5cf6;
+        position: relative;
+      }
+      .p-answered-review::after {
+        content: "";
+        position: absolute;
+        bottom: 2px;
+        right: 2px;
+        width: 6px;
+        height: 6px;
+        background: #10b981;
+        border-radius: 50%;
+      }
+
+      .palette-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+        max-height: 380px;
+        overflow-y: auto;
+        padding: 0.5rem 0.2rem;
+        border-top: 1px solid var(--slate-200);
+        border-bottom: 1px solid var(--slate-200);
+        margin-bottom: 1rem;
+      }
+
+      .palette-btn {
+        height: 36px;
+        border-radius: 4px;
+        border: 1px solid var(--slate-300);
+        background: #f1f5f9;
+        color: var(--slate-700);
+        font-size: 0.8rem;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.15s ease;
+        position: relative;
+      }
+
+      .palette-btn.current {
+        outline: 2px solid #2563eb;
+        outline-offset: 1px;
+      }
+
+      .palette-btn.answered {
+        background: #10b981;
+        color: #ffffff;
+        border-color: #059669;
+      }
+      .palette-btn.not-answered {
+        background: #ef4444;
+        color: #ffffff;
+        border-color: #dc2626;
+      }
+      .palette-btn.not-visited {
+        background: #f8fafc;
+        color: var(--slate-600);
+        border-color: #cbd5e1;
+      }
+      .palette-btn.review {
+        background: #8b5cf6;
+        color: #ffffff;
+        border-color: #7c3aed;
+      }
+      .palette-btn.answered-review {
+        background: #8b5cf6;
+        color: #ffffff;
+        border-color: #7c3aed;
+      }
+      .palette-btn.answered-review::after {
+        content: "";
+        position: absolute;
+        bottom: 3px;
+        right: 3px;
+        width: 6px;
+        height: 6px;
+        background: #10b981;
+        border-radius: 50%;
+      }
+
+      /* COMMON UTILITIES */
+      .badge-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.2rem 0.6rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+      }
+      .badge-pill.verified {
+        background: #d1fae5;
+        color: #065f46;
+        border: 1px solid #6ee7b7;
+      }
+      .badge-pill.mock {
+        background: var(--amber-100);
+        color: var(--amber-800);
+        border: 1px solid var(--amber-300);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.45rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        padding: 0.55rem 1rem;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition: all 0.15s ease;
+        text-decoration: none;
+      }
+      .btn-primary {
+        background: var(--primary-600);
+        color: #ffffff;
+      }
+      .btn-primary:hover {
+        background: var(--primary-700);
+      }
+      .btn-success {
+        background: #059669;
+        color: #ffffff;
+      }
+      .btn-success:hover {
+        background: #047857;
+      }
+      .btn-warning {
+        background: #d97706;
+        color: #ffffff;
+      }
+      .btn-warning:hover {
+        background: #b45309;
+      }
+      .btn-outline {
+        background: transparent;
+        border-color: var(--slate-300);
+        color: var(--slate-700);
+      }
+      .btn-outline:hover {
+        background: var(--slate-100);
+        border-color: var(--slate-400);
+      }
+      .btn-glass {
+        background: rgba(255, 255, 255, 0.15);
+        color: #ffffff;
+        border-color: rgba(255, 255, 255, 0.25);
+      }
+      .btn-glass:hover {
+        background: rgba(255, 255, 255, 0.25);
+      }
+
+      .nat-input-box {
+        width: 100%;
+        max-width: 220px;
+        padding: 0.5rem 0.75rem;
+        font-size: 1rem;
+        font-family: var(--font-mono);
+        font-weight: 600;
+        border: 1.5px solid var(--slate-300);
+        border-radius: var(--radius-sm);
+        background: #ffffff;
+      }
+
+      .app-card {
+        background: #ffffff;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--slate-200);
+        box-shadow: var(--shadow-sm);
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .app-card-title {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--slate-900);
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      /* RESULT HERO CARD */
+      .result-hero-card {
+        background: linear-gradient(
+          135deg,
+          #1e3a8a 0%,
+          #1e40af 60%,
+          #2563eb 100%
+        );
+        color: #ffffff;
+        border-radius: var(--radius-lg);
+        padding: 1.75rem;
+        box-shadow: var(--shadow-lg);
+        margin-bottom: 1.5rem;
+      }
+
+      .big-score-display {
+        font-size: 3.2rem;
+        font-weight: 800;
+        line-height: 1.1;
+        font-variant-numeric: tabular-nums;
+      }
+      .big-score-display span.max-denom {
+        font-size: 1.5rem;
+        color: #bfdbfe;
+        font-weight: 500;
+      }
+      .big-score-display.negative-score {
+        color: #fca5a5;
+      }
+
+      .hero-meta-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .hero-stat-item {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: var(--radius-md);
+        padding: 0.75rem 1rem;
+      }
+
+      .hero-stat-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        color: #bfdbfe;
+        font-weight: 600;
+      }
+      .hero-stat-val {
+        font-size: 1.35rem;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+      }
+      .hero-stat-sub {
+        font-size: 0.75rem;
+        color: #93c5fd;
+      }
+
+      /* TABLES */
+      .table-responsive {
+        overflow-x: auto;
+        margin: 0.75rem 0 1.25rem 0;
+        border: 1px solid var(--slate-200);
+        border-radius: var(--radius-md);
+      }
+      table.exam-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.875rem;
+        background: #ffffff;
+      }
+      table.exam-table th {
+        background: var(--slate-100);
+        color: var(--slate-700);
+        font-weight: 700;
+        padding: 0.65rem 0.85rem;
+        border-bottom: 1px solid var(--slate-200);
+      }
+      table.exam-table td {
+        padding: 0.65rem 0.85rem;
+        border-bottom: 1px solid var(--slate-100);
+        font-variant-numeric: tabular-nums;
+      }
+      table.exam-table tr.total-row {
+        background: var(--slate-50);
+        font-weight: 800;
+        border-top: 2px solid var(--slate-300);
+      }
+
+      /* CHARTS */
+      .charts-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1.25rem;
+        margin: 1.25rem 0;
+      }
+      .chart-box {
+        background: #ffffff;
+        border: 1px solid var(--slate-200);
+        border-radius: var(--radius-md);
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* MODAL */
+      .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        z-index: 1000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+      }
+      .modal-backdrop.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .modal-dialog {
+        background: #ffffff;
+        border-radius: var(--radius-lg);
+        width: 100%;
+        max-width: 640px;
+        padding: 1.5rem;
+        box-shadow: var(--shadow-lg);
+      }
+
+      /* PRINT */
+      @media print {
+        body {
+          background: #ffffff !important;
+        }
+        .app-container {
+          padding: 0 !important;
+          max-width: 100% !important;
+        }
+        .actions-row,
+        .controls-bar,
+        .app-experience-nav,
+        .cbt-palette-panel,
+        .btn,
+        .modal-backdrop {
+          display: none !important;
+        }
+        .result-hero-card {
+          background: #ffffff !important;
+          color: #000000 !important;
+          border: 2px solid #000000 !important;
+        }
+        .big-score-display {
+          color: #000000 !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- HEADER -->
+      <header class="exam-header" role="banner">
+        <div class="header-top">
+          <div>
+            <h1 class="brand-title" id="page-heading">
+              GATE BT 2021 Official Paper & CBT Mock Test
+              <span class="badge-bt">Paper: BT</span>
+            </h1>
+            <p class="header-subtitle">
+              Take an authentic GATE Biotechnology mock test under timed CBT
+              conditions or calculate marks question-by-question with complete
+              statements, options, and official answer keys.
+            </p>
+          </div>
+          <div>
+            <button
+              class="btn btn-glass"
+              id="btn-run-tests"
+              aria-label="Run automated unit test suite"
+            >
+              <svg
+                width="16"
+                height="16"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+              </svg>
+              Run Unit Tests
+            </button>
+          </div>
+        </div>
+
+        <!-- CONTROLS ROW -->
+        <div class="controls-bar">
+          <div class="control-group">
+            <label for="exam-year-select" class="control-label"
+              >Select Paper / Mock Year:</label
+            >
+            <select
+              id="exam-year-select"
+              class="custom-select"
+              aria-label="Select Examination Year"
+            >
+              <option value="2021" selected>
+                GATE BT 2021 (Official Paper - IIT Bombay)
+              </option>
+              <option value="2024">
+                GATE BT 2024 (Official Paper - IISc Bangalore)
+              </option>
+              <option value="2023">
+                GATE BT 2023 (Official Paper - IIT Kanpur)
+              </option>
+              <option value="2022">
+                GATE BT 2022 (Official Paper - IIT Kharagpur)
+              </option>
+              <option value="2026">GATE BT 2026 (Official Model Paper)</option>
+              <option value="2027">GATE BT 2027 (Official Model Master)</option>
+              <option value="custom">Custom Mock Test (Practice)</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <span class="badge-pill verified" id="key-source-badge">
+              <svg
+                width="12"
+                height="12"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                />
+              </svg>
+              <span id="key-source-text"
+                >Official Paper: GATE 2021 BT (IIT Bombay)</span
+              >
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <!-- EXPERIENCE NAVIGATION TABS -->
+      <div class="app-experience-nav">
+        <button
+          class="experience-btn active"
+          id="btn-exp-cbt"
+          aria-selected="true"
+        >
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
+            />
+          </svg>
+          📝 Live CBT Mock Test Mode (180 Min Timer & TCS iON Palette)
+        </button>
+        <button class="experience-btn" id="btn-exp-calc" aria-selected="false">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
+            />
+          </svg>
+          📊 Question Review & Instant Marks Calculator Mode
+        </button>
+      </div>
+
+      <!-- VIEW 1: CBT LIVE MOCK TEST SIMULATOR -->
+      <div id="view-cbt-mock" style="display: block">
+        <div class="cbt-container">
+          <!-- LEFT: QUESTION PANEL -->
+          <main
+            class="cbt-test-panel"
+            role="main"
+            aria-label="Mock Test Question Workspace"
+          >
+            <div class="cbt-top-bar">
+              <div class="cbt-section-tabs">
+                <button class="cbt-sec-tab active" id="cbt-tab-ga">
+                  Section 1: General Aptitude (Q1-10)
+                </button>
+                <button class="cbt-sec-tab" id="cbt-tab-bt">
+                  Section 2: Biotechnology (Q11-65)
+                </button>
+              </div>
+
+              <div
+                class="cbt-timer-box"
+                id="cbt-timer-display"
+                title="Exam Timer"
+              >
+                <svg
+                  width="18"
+                  height="18"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
+                  />
+                </svg>
+                <span id="cbt-timer-text">03:00:00</span>
+                <button
+                  id="btn-pause-timer"
+                  style="
+                    background: none;
+                    border: none;
+                    color: #38bdf8;
+                    cursor: pointer;
+                    font-size: 0.75rem;
+                    text-decoration: underline;
+                  "
+                >
+                  Pause
+                </button>
+              </div>
+            </div>
+
+            <div class="cbt-q-header">
+              <div>
+                <strong
+                  id="cbt-q-title"
+                  style="font-size: 1.1rem; color: var(--slate-900)"
+                  >Question 1</strong
+                >
+                <span
+                  id="cbt-q-type-badge"
+                  class="badge-pill"
+                  style="
+                    background: #f3e8ff;
+                    color: #6b21a8;
+                    margin-left: 0.5rem;
+                  "
+                  >MCQ</span
+                >
+                <span
+                  id="cbt-q-marks-badge"
+                  class="badge-pill"
+                  style="
+                    background: var(--slate-100);
+                    color: var(--slate-700);
+                    border: 1px solid var(--slate-300);
+                  "
+                  >1 Mark (+1 / -0.33)</span
+                >
+              </div>
+              <div
+                id="cbt-q-topic"
+                style="
+                  font-size: 0.82rem;
+                  font-weight: 700;
+                  color: var(--emerald-700);
+                "
+              >
+                Topic: General Aptitude
+              </div>
+            </div>
+
+            <div class="cbt-q-body">
+              <div class="cbt-q-text" id="cbt-q-statement">
+                Loading question text...
+              </div>
+
+              <!-- OPTIONS CONTAINER -->
+              <div id="cbt-options-container" class="cbt-options-list">
+                <!-- Rendered via JS -->
+              </div>
+            </div>
+
+            <div class="cbt-actions-bar">
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap">
+                <button class="btn btn-primary" id="btn-cbt-save-next">
+                  Save & Next
+                </button>
+                <button class="btn btn-warning" id="btn-cbt-mark-review">
+                  Mark for Review & Next
+                </button>
+                <button class="btn btn-outline" id="btn-cbt-clear">
+                  Clear Response
+                </button>
+              </div>
+
+              <div style="display: flex; gap: 0.5rem">
+                <button class="btn btn-outline" id="btn-cbt-prev">
+                  &larr; Previous
+                </button>
+                <button class="btn btn-outline" id="btn-cbt-next">
+                  Next &rarr;
+                </button>
+                <button
+                  class="btn btn-success"
+                  id="btn-cbt-submit"
+                  style="font-weight: 700"
+                >
+                  Submit Test
+                </button>
+              </div>
+            </div>
+          </main>
+
+          <!-- RIGHT: TCS iON QUESTION PALETTE -->
+          <aside
+            class="cbt-palette-panel"
+            role="complementary"
+            aria-label="Question Palette"
+          >
+            <h3
+              style="
+                font-size: 0.95rem;
+                font-weight: 700;
+                color: var(--slate-800);
+                margin-bottom: 0.75rem;
+              "
+            >
+              Question Palette
+            </h3>
+
+            <div class="palette-legend-grid">
+              <div class="p-legend-item">
+                <span class="p-icon p-answered" id="count-p-answered">0</span>
+                Answered
+              </div>
+              <div class="p-legend-item">
+                <span class="p-icon p-not-answered" id="count-p-not-answered"
+                  >0</span
+                >
+                Not Answered
+              </div>
+              <div class="p-legend-item">
+                <span class="p-icon p-not-visited" id="count-p-not-visited"
+                  >65</span
+                >
+                Not Visited
+              </div>
+              <div class="p-legend-item">
+                <span class="p-icon p-review" id="count-p-review">0</span>
+                Marked for Review
+              </div>
+              <div class="p-legend-item" style="grid-column: span 2">
+                <span class="p-icon p-answered-review" id="count-p-ans-review"
+                  >0</span
+                >
+                Answered & Marked for Review
+              </div>
+            </div>
+
+            <div class="palette-grid" id="cbt-palette-grid">
+              <!-- 1 to 65 rendered dynamically -->
+            </div>
+
+            <div style="margin-top: 1rem">
+              <button
+                class="btn btn-success"
+                id="btn-cbt-submit-sidebar"
+                style="width: 100%; font-size: 1rem; padding: 0.75rem"
+              >
+                Submit Full Mock Test
+              </button>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+      <!-- VIEW 2: INSTANT CALCULATOR & QUESTION-BY-QUESTION REVIEW MODE -->
+      <div id="view-calc-review" style="display: none">
+        <!-- HERO SCORE CARD (Shown when calculated or test submitted) -->
+        <section class="result-hero-card" id="result-hero-card">
+          <div class="score-badge-header">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
+              />
+            </svg>
+            <span id="hero-exam-title">GATE BT 2021 RESULT</span>
+          </div>
+          <div class="big-score-display" id="display-total-marks">
+            0.00 <span class="max-denom">/ 100</span>
+          </div>
+          <div style="font-size: 0.85rem; color: #dbeafe; margin-top: 0.25rem">
+            Calculated Raw Marks out of 100 (Official normalized GATE Score is
+            released post-exam)
+          </div>
+
+          <div class="hero-meta-grid">
+            <div class="hero-stat-item">
+              <div class="hero-stat-label">General Aptitude (GA)</div>
+              <div class="hero-stat-val" id="display-ga-marks">
+                0.00 <span class="hero-stat-sub">/ 15</span>
+              </div>
+              <div class="hero-stat-sub" id="display-ga-accuracy">
+                Accuracy: N/A
+              </div>
+            </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-label">Biotechnology (BT)</div>
+              <div class="hero-stat-val" id="display-bt-marks">
+                0.00 <span class="hero-stat-sub">/ 85</span>
+              </div>
+              <div class="hero-stat-sub" id="display-bt-accuracy">
+                Accuracy: N/A
+              </div>
+            </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-label">Accuracy & Attempt</div>
+              <div class="hero-stat-val" id="display-overall-accuracy">N/A</div>
+              <div class="hero-stat-sub" id="display-attempt-rate">
+                Attempted: 0 / 65 (0%)
+              </div>
+            </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-label">MCQ Negative Marks</div>
+              <div
+                class="hero-stat-val"
+                id="display-mcq-neg"
+                style="color: #fca5a5"
+              >
+                -0.00
+              </div>
+              <div class="hero-stat-sub">Applies only to MCQs</div>
+            </div>
+          </div>
+
+          <div
+            class="actions-row"
+            style="
+              margin-top: 1.25rem;
+              padding-top: 1rem;
+              border-top: 1px solid rgba(255, 255, 255, 0.15);
+              display: flex;
+              gap: 0.5rem;
+              flex-wrap: wrap;
+            "
+          >
+            <button class="btn btn-light" id="btn-recalc-top">
+              Recalculate Score
+            </button>
+            <button class="btn btn-glass" id="btn-retake-mock">
+              Retake Mock Test
+            </button>
+            <button class="btn btn-glass" id="btn-print-result">
+              Print / Save PDF
+            </button>
+            <button class="btn btn-glass" id="btn-export-csv">
+              Export CSV
+            </button>
+            <button class="btn btn-glass" id="btn-export-json">
+              Export JSON
+            </button>
+          </div>
+        </section>
+
+        <!-- SECTION & TYPE BREAKDOWNS -->
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.25rem;
+          "
+        >
+          <section class="app-card">
+            <h2 class="app-card-title">Section-Wise Performance</h2>
+            <div class="table-responsive">
+              <table class="exam-table">
+                <thead>
+                  <tr>
+                    <th>Section</th>
+                    <th>Attempted</th>
+                    <th>Correct</th>
+                    <th>Wrong</th>
+                    <th>Skipped</th>
+                    <th>Marks</th>
+                    <th>Accuracy</th>
+                  </tr>
+                </thead>
+                <tbody id="section-breakdown-tbody"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="app-card">
+            <h2 class="app-card-title">Question-Type Performance</h2>
+            <div class="table-responsive">
+              <table class="exam-table">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Correct</th>
+                    <th>Wrong</th>
+                    <th>Skipped</th>
+                    <th>Negative</th>
+                    <th>Marks</th>
+                  </tr>
+                </thead>
+                <tbody id="type-breakdown-tbody"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+
+        <!-- VISUALIZATIONS -->
+        <section class="app-card">
+          <h2 class="app-card-title">Performance Analytics</h2>
+          <div class="charts-grid">
+            <div class="chart-box">
+              <div class="chart-title">Attempt Breakdown</div>
+              <div
+                id="chart-outcome-donut"
+                style="width: 200px; height: 200px"
+              ></div>
+              <div
+                id="chart-donut-legend"
+                style="
+                  margin-top: 0.75rem;
+                  font-size: 0.8rem;
+                  display: flex;
+                  gap: 0.75rem;
+                "
+              ></div>
+            </div>
+            <div class="chart-box">
+              <div class="chart-title">Section Marks: Obtained vs Max</div>
+              <div
+                id="chart-section-bars"
+                style="width: 100%; height: 200px"
+              ></div>
+            </div>
+            <div class="chart-box">
+              <div class="chart-title">Marks by Question Type</div>
+              <div
+                id="chart-type-bars"
+                style="width: 100%; height: 200px"
+              ></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- QUESTION BY QUESTION REVIEW LIST -->
+        <section class="app-card">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              flex-wrap: wrap;
+              gap: 0.75rem;
+              margin-bottom: 1rem;
+            "
+          >
+            <h2 class="app-card-title" style="margin-bottom: 0">
+              Question-by-Question Detailed Review & Matching
+            </h2>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap">
+              <input
+                type="text"
+                id="input-review-search"
+                class="nat-input-box"
+                style="max-width: 240px"
+                placeholder="Search question keywords..."
+              />
+              <button class="btn btn-outline" id="btn-toggle-answer-keys">
+                Show / Hide Official Key
+              </button>
+            </div>
+          </div>
+
+          <div
+            id="review-questions-list"
+            style="display: flex; flex-direction: column; gap: 1rem"
+          ></div>
+        </section>
+      </div>
+    </div>
+
+    <!-- SUBMISSION CONFIRMATION MODAL -->
+    <div class="modal-backdrop" id="modal-submit-confirm">
+      <div class="modal-dialog">
+        <h3
+          style="
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--slate-900);
+            margin-bottom: 0.75rem;
+          "
+        >
+          Submit GATE Biotechnology Mock Test?
+        </h3>
+        <p
+          style="
+            font-size: 0.9rem;
+            color: var(--slate-600);
+            margin-bottom: 1rem;
+          "
+        >
+          Are you sure you want to end and submit your examination? Once
+          submitted, your answers will be evaluated and the final score card
+          will be displayed.
+        </p>
+
+        <div
+          style="
+            background: var(--slate-50);
+            border: 1px solid var(--slate-200);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            margin-bottom: 1.25rem;
+          "
+        >
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 0.6rem;
+              font-size: 0.875rem;
+            "
+          >
+            <div>Total Questions: <strong>65</strong></div>
+            <div>
+              Answered:
+              <strong id="modal-stat-answered" style="color: var(--emerald-600)"
+                >0</strong
+              >
+            </div>
+            <div>
+              Not Answered:
+              <strong
+                id="modal-stat-not-answered"
+                style="color: var(--rose-600)"
+                >0</strong
+              >
+            </div>
+            <div>
+              Marked for Review:
+              <strong id="modal-stat-review" style="color: var(--purple-600)"
+                >0</strong
+              >
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.6rem">
+          <button class="btn btn-outline" id="btn-cancel-modal-submit">
+            Cancel & Return to Test
+          </button>
+          <button class="btn btn-success" id="btn-confirm-modal-submit">
+            Yes, Submit Test Now
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TEST SUITE MODAL -->
+    <div class="modal-backdrop" id="modal-tests">
+      <div class="modal-dialog">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+          "
+        >
+          <h3 style="font-size: 1.15rem; font-weight: 700">
+            Automated Calculation Engine Unit Tests
+          </h3>
+          <button
+            id="modal-test-close"
+            style="
+              background: none;
+              border: none;
+              font-size: 1.4rem;
+              cursor: pointer;
+            "
+          >
+            &times;
+          </button>
+        </div>
+        <div
+          id="test-results-container"
+          style="
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            background: var(--slate-900);
+            color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            max-height: 360px;
+            overflow-y: auto;
+          "
+        ></div>
+        <div style="margin-top: 1rem; display: flex; justify-content: flex-end">
+          <button class="btn btn-primary" id="modal-test-rerun">
+            Re-run Test Suite
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMBEDDED APPLICATION SCRIPTS -->
+    <script>
+      /**
+       * GATE BIOTECHNOLOGY (BT) MARKS CALCULATOR & CBT MOCK TEST ENGINE
+       */
+
+      // --- 1. AUTHENTIC QUESTION BANKS PER YEAR ---
+
+      // GATE 2021 BIOTECHNOLOGY (IIT BOMBAY) QUESTION PAPER
+      function getGate2021Questions() {
+        return [
+          // GA 1M (Q1-Q5)
+          {
+            questionNumber: 1,
+            myPaperNumber: 1,
+            section: "GA",
+            type: "MCQ",
+            marks: 1,
+            topic: "Verbal Grammar - Subject-Verb Agreement",
+            statement:
+              "The current scenario of excessive and indiscriminate use of antibiotics in animal farming and aquaculture has been a major contributor to the surge in ________ resistant bacterial strains.",
+            options: {
+              A: "multiple drug",
+              B: "multidrug",
+              C: "multiply drug",
+              D: "multidrugs",
+            },
+            correctAnswer: "B",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 2,
+            myPaperNumber: 2,
+            section: "GA",
+            type: "MCQ",
+            marks: 1,
+            topic: "Verbal Analogies",
+            statement: "NOSTALGIA is to PAST as ANTICIPATION is to ________.",
+            options: { A: "Present", B: "Future", C: "History", D: "Regret" },
+            correctAnswer: "B",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 3,
+            myPaperNumber: 3,
+            section: "GA",
+            type: "MCQ",
+            marks: 1,
+            topic: "Ratios & Proportions",
+            statement:
+              "If p : q = 1 : 2, q : r = 4 : 3, and r : s = 9 : 10, then the compound ratio p : s is:",
+            options: { A: "3 : 5", B: "2 : 5", C: "1 : 5", D: "3 : 10" },
+            correctAnswer: "A",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 4,
+            myPaperNumber: 4,
+            section: "GA",
+            type: "MCQ",
+            marks: 1,
+            topic: "Spatial Folding & Geometry",
+            statement:
+              "A circular paper disk is folded along its diameter twice to form a quadrant. A triangular notch is cut at the curved perimeter. When unfolded completely, how many notches will be visible?",
+            options: { A: "2", B: "4", C: "6", D: "8" },
+            correctAnswer: "B",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 5,
+            myPaperNumber: 5,
+            section: "GA",
+            type: "NAT",
+            marks: 1,
+            topic: "Quantitative Percentages",
+            statement:
+              "The price of a laboratory reagent increased by 25%. By what percentage must a biotech researcher reduce consumption so that total expenditure remains unchanged?",
+            options: null,
+            correctAnswer: null,
+            correctRange: { min: 20, max: 20 },
+            candidateAnswer: null,
+          },
+
+          // GA 2M (Q6-Q10)
+          {
+            questionNumber: 6,
+            myPaperNumber: 6,
+            section: "GA",
+            type: "MCQ",
+            marks: 2,
+            topic: "Reading Comprehension - Critical Inference",
+            statement:
+              "'While CRISPR-Cas9 genome editing offers unprecedented precision, germline modification raises profound bioethical concerns regarding unintended off-target edits and hereditary modifications.' Which statement is best supported?",
+            options: {
+              A: "Somatic genome editing is strictly forbidden internationally.",
+              B: "Germline editing introduces genomic alterations that can be passed to future generations.",
+              C: "CRISPR-Cas9 never generates off-target cleavage.",
+              D: "Precision editing completely resolves all bioethical debates.",
+            },
+            correctAnswer: "B",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 7,
+            myPaperNumber: 7,
+            section: "GA",
+            type: "MCQ",
+            marks: 2,
+            topic: "Combinatorics & Probability",
+            statement:
+              "A committee of 4 researchers is to be chosen from a group of 5 molecular biologists and 4 biochemists. What is the probability that the committee contains exactly 2 molecular biologists and 2 biochemists?",
+            options: { A: "10/21", B: "5/14", C: "20/63", D: "15/42" },
+            correctAnswer: "A",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 8,
+            myPaperNumber: 8,
+            section: "GA",
+            type: "MCQ",
+            marks: 2,
+            topic: "Speed, Distance & Relative Motion",
+            statement:
+              "Two runners start simultaneously from the same point on a 400 m circular track in the same direction at speeds of 6 m/s and 10 m/s. After how many seconds will they meet for the first time?",
+            options: { A: "100", B: "80", C: "120", D: "60" },
+            correctAnswer: "A",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 9,
+            myPaperNumber: 9,
+            section: "GA",
+            type: "MSQ",
+            marks: 2,
+            topic: "Logical Statements & Syllogism",
+            statement:
+              "Statements: 'All plasmids are circular double-stranded DNA molecules.' 'Some circular double-stranded DNA molecules are mitochondrial.' Which of the following conclusions are VALID?",
+            options: {
+              A: "All mitochondrial DNA molecules are plasmids.",
+              B: "Plasmids possess phosphodiester bonds.",
+              C: "No plasmids are linear.",
+              D: "Mitochondrial DNA cannot be circular.",
+            },
+            correctAnswer: ["B", "C"],
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 10,
+            myPaperNumber: 10,
+            section: "GA",
+            type: "NAT",
+            marks: 2,
+            topic: "Geometric Mensuration",
+            statement:
+              "A cylindrical fermenter with radius 7 meters and height 10 meters has a total volume (taking pi = 22/7, in cubic meters) of:",
+            options: null,
+            correctAnswer: null,
+            correctRange: { min: 1540, max: 1540 },
+            candidateAnswer: null,
+          },
+
+          // BT 1M (Q11-Q35)
+          {
+            questionNumber: 11,
+            myPaperNumber: 11,
+            section: "BT",
+            type: "MCQ",
+            marks: 1,
+            topic: "Microbiology - Pathogens",
+            statement:
+              "Which of the following microorganisms is an obligate intracellular bacterial parasite?",
+            options: {
+              A: "Chlamydia trachomatis",
+              B: "Escherichia coli",
+              C: "Bacillus subtilis",
+              D: "Pseudomonas aeruginosa",
+            },
+            correctAnswer: "A",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 12,
+            myPaperNumber: 12,
+            section: "BT",
+            type: "MCQ",
+            marks: 1,
+            topic: "Biochemistry - Photosynthesis",
+            statement:
+              "Which of the following enzymes catalyzes the phosphorylation of ribulose 5-phosphate to ribulose 1,5-bisphosphate in the photosynthetic Calvin cycle?",
+            options: {
+              A: "Phosphoribulokinase",
+              B: "RuBisCO",
+              C: "Glyceraldehyde 3-phosphate dehydrogenase",
+              D: "Transketolase",
+            },
+            correctAnswer: "A",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 13,
+            myPaperNumber: 13,
+            section: "BT",
+            type: "MCQ",
+            marks: 1,
+            topic: "Biochemistry - Protein Structure",
+            statement:
+              "Which amino acid residue is commonly known as an 'alpha-helix breaker' due to its cyclic pyrrolidine side chain creating steric hindrance?",
+            options: {
+              A: "Alanine",
+              B: "Proline",
+              C: "Leucine",
+              D: "Methionine",
+            },
+            correctAnswer: "B",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 14,
+            myPaperNumber: 14,
+            section: "BT",
+            type: "MCQ",
+            marks: 1,
+            topic: "Cell Biology - Protein Sorting",
+            statement:
+              "The Signal Recognition Particle (SRP) binds to the hydrophobic N-terminal signal sequence of nascent polypeptides and directs the ribosome complex to the:",
+            options: {
+              A: "Mitochondrial outer membrane",
+              B: "Rough endoplasmic reticulum membrane",
+              C: "Peroxisomal membrane",
+              D: "Nuclear pore complex",
+            },
+            correctAnswer: "B",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 15,
+            myPaperNumber: 15,
+            section: "BT",
+            type: "MCQ",
+            marks: 1,
+            topic: "Bioprocess Engineering - Chemostat Kinetics",
+            statement:
+              "In an ideal continuous stirred tank bioreactor (chemostat) operated at steady state with negligible endogenous metabolism, the microbial specific growth rate (mu) is equal to:",
+            options: {
+              A: "Dilution rate (D)",
+              B: "Maximum specific growth rate (mumax)",
+              C: "Half of dilution rate",
+              D: "Ks / D",
+            },
+            correctAnswer: "A",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 16,
+            myPaperNumber: 16,
+            section: "BT",
+            type: "MCQ",
+            marks: 1,
+            topic: "Immunology - Western Blotting",
+            statement:
+              "In standard indirect Western blotting, the secondary antibody conjugated to horseradish peroxidase (HRP) specifically recognizes:",
+            options: {
+              A: "The target antigen",
+              B: "The constant (Fc) region of the primary antibody",
+              C: "The Fab antigen-binding fragment",
+              D: "Beta-mercaptoethanol",
+            },
+            correctAnswer: "B",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 17,
+            myPaperNumber: 17,
+            section: "BT",
+            type: "MCQ",
+            marks: 1,
+            topic: "Molecular Biology - Transcription Mapping",
+            statement:
+              "Which of the following experimental techniques is widely used to map the exact 5'-transcription initiation start site of an mRNA?",
+            options: {
+              A: "Southern blotting",
+              B: "Primer extension",
+              C: "Western blotting",
+              D: "DNA foot-printing",
+            },
+            correctAnswer: "B",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 18,
+            myPaperNumber: 18,
+            section: "BT",
+            type: "MCQ",
+            marks: 1,
+            topic: "Plant Biotechnology - Haploids & Triploids",
+            statement:
+              "In plant tissue culture, triploid plants with 3n chromosomal complement are routinely regenerated from the culture of:",
+            options: {
+              A: "Pollen grains",
+              B: "Endosperm tissue",
+              C: "Shoot apical meristem",
+              D: "Nucellus",
+            },
+            correctAnswer: "B",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 19,
+            myPaperNumber: 19,
+            section: "BT",
+            type: "MCQ",
+            marks: 1,
+            topic: "Genetics - Multiple Allelism",
+            statement:
+              "In a diploid organism, a gene locus has 4 multiple alleles. The maximum theoretical number of distinct diploid genotypes possible in this population is:",
+            options: { A: "4", B: "8", C: "10", D: "16" },
+            correctAnswer: "C",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 20,
+            myPaperNumber: 20,
+            section: "BT",
+            type: "MCQ",
+            marks: 1,
+            topic: "Molecular Biology - Topoisomerases",
+            statement:
+              "Bacterial DNA gyrase (Type II topoisomerase) introduces:",
+            options: {
+              A: "Positive supercoiling using ATP",
+              B: "Negative supercoiling into relaxed DNA using ATP",
+              C: "Single-strand nicks without ATP",
+              D: "RNA primers during replication",
+            },
+            correctAnswer: "B",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 21,
+            myPaperNumber: 21,
+            section: "BT",
+            type: "MCQ",
+            marks: 1,
+            topic: "Enzyme Kinetics - Turnover Number",
+            statement:
+              "The catalytic efficiency of an enzyme is mathematically represented by the ratio:",
+            options: {
+              A: "Km / Vmax",
+              B: "kcat / Km",
+              C: "Vmax / kcat",
+              D: "Km / kcat",
+            },
+            correctAnswer: "B",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 22,
+            myPaperNumber: 22,
+            section: "BT",
+            type: "MCQ",
+            marks: 1,
+            topic: "Immunology - Hypersensitivity",
+            statement:
+              "Type I immediate hypersensitivity reactions (such as systemic anaphylaxis and allergic asthma) are mediated primarily by:",
+            options: {
+              A: "IgE antibodies and mast cell degranulation",
+              B: "IgG immune complexes",
+              C: "Cytotoxic T lymphocytes",
+              D: "Macrophage lysosomal enzymes",
+            },
+            correctAnswer: "A",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 23,
+            myPaperNumber: 23,
+            section: "BT",
+            type: "MCQ",
+            marks: 1,
+            topic: "Bioinformatics - Heuristic Search",
+            statement:
+              "BLAST (Basic Local Alignment Search Tool) uses which computational strategy to accelerate sequence database search?",
+            options: {
+              A: "Exhaustive Smith-Waterman matrix",
+              B: "Word (k-mer) matching and local seed extension",
+              C: "Global Needleman-Wunsch dynamic programming",
+              D: "Branch-and-bound tree pruning",
+            },
+            correctAnswer: "B",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 24,
+            myPaperNumber: 24,
+            section: "BT",
+            type: "MCQ",
+            marks: 1,
+            topic: "Downstream Processing - Filtration",
+            statement:
+              "During constant pressure dead-end cake filtration, the rate of filtrate flow (dV/dt) as filtration proceeds:",
+            options: {
+              A: "Increases linearly",
+              B: "Remains constant",
+              C: "Decreases progressively due to cake thickness build-up",
+              D: "Oscillates periodically",
+            },
+            correctAnswer: "C",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 25,
+            myPaperNumber: 25,
+            section: "BT",
+            type: "MCQ",
+            marks: 1,
+            topic: "Cell Biology - Microfilaments",
+            statement:
+              "Cytochalasin B inhibits eukaryotic cell motility and division primarily by binding to and blocking polymerization of:",
+            options: {
+              A: "Microtubules (tubulin)",
+              B: "Actin microfilaments",
+              C: "Intermediate filaments (vimentin)",
+              D: "Nuclear lamins",
+            },
+            correctAnswer: "B",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+
+          // MSQs (Q26-Q30, 1M)
+          {
+            questionNumber: 26,
+            myPaperNumber: 26,
+            section: "BT",
+            type: "MSQ",
+            marks: 1,
+            topic: "Microbiology - Antibiotics Mechanisms",
+            statement:
+              "Which of the following antibiotics inhibit bacterial protein synthesis by specifically binding to the 50S ribosomal subunit?",
+            options: {
+              A: "Chloramphenicol",
+              B: "Erythromycin (Macrolide)",
+              C: "Tetracycline",
+              D: "Streptomycin",
+            },
+            correctAnswer: ["A", "B"],
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 27,
+            myPaperNumber: 27,
+            section: "BT",
+            type: "MSQ",
+            marks: 1,
+            topic: "Cell Biology - Membrane Transport",
+            statement:
+              "Which of the following cellular transport processes represent SECONDARY active transport driven by ion electrochemical gradients?",
+            options: {
+              A: "Na+/K+ ATPase",
+              B: "Na+/glucose symporter in intestinal epithelium",
+              C: "Na+/Ca2+ antiporter in cardiac muscle",
+              D: "GLUT1 facilitated glucose transporter",
+            },
+            correctAnswer: ["B", "C"],
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 28,
+            myPaperNumber: 28,
+            section: "BT",
+            type: "MSQ",
+            marks: 1,
+            topic: "Plant Biotechnology - Secondary Metabolites",
+            statement:
+              "Which of the following classes of compounds are categorized as plant secondary metabolites?",
+            options: {
+              A: "Alkaloids (e.g. morphine, nicotine)",
+              B: "Terpenoids (e.g. menthol, taxol)",
+              C: "Flavonoids and phenolics",
+              D: "Ribosomal core proteins",
+            },
+            correctAnswer: ["A", "B", "C"],
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 29,
+            myPaperNumber: 29,
+            section: "BT",
+            type: "MSQ",
+            marks: 1,
+            topic: "Molecular Biology - RNA Processing",
+            statement:
+              "Which of the following modifications take place during pre-mRNA maturation in eukaryotic nuclei?",
+            options: {
+              A: "Addition of 7-methylguanosine 5'-cap",
+              B: "3'-polyadenylation by poly(A) polymerase",
+              C: "Removal of introns via spliceosome",
+              D: "Formylation of the initiator methionine",
+            },
+            correctAnswer: ["A", "B", "C"],
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 30,
+            myPaperNumber: 30,
+            section: "BT",
+            type: "MSQ",
+            marks: 1,
+            topic: "Immunology - Complement Activation",
+            statement:
+              "Which of the following complement pathways are activated in an antibody-independent manner?",
+            options: {
+              A: "Alternative complement pathway",
+              B: "Classical pathway",
+              C: "Lectin complement pathway",
+              D: "Fc receptor-mediated pathway",
+            },
+            correctAnswer: ["A", "C"],
+            correctRange: null,
+            candidateAnswer: null,
+          },
+
+          // NATs (Q31-Q35, 1M)
+          {
+            questionNumber: 31,
+            myPaperNumber: 31,
+            section: "BT",
+            type: "NAT",
+            marks: 1,
+            topic: "Spectrophotometry - Beer Lambert",
+            statement:
+              "A solution of NADH has an absorbance of 0.622 at 340 nm in a 1.0 cm path length cuvette. Given molar extinction coefficient of NADH is 6220 M^-1 cm^-1, the concentration of NADH (in micromolar, microM) is:",
+            options: null,
+            correctAnswer: null,
+            correctRange: { min: 99, max: 101 },
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 32,
+            myPaperNumber: 32,
+            section: "BT",
+            type: "NAT",
+            marks: 1,
+            topic: "Microbial Growth - Generations",
+            statement:
+              "A bacterial culture inoculating at 10^3 cells/mL grows exponentially to 6.4 x 10^4 cells/mL. The number of generations (n) that occurred is:",
+            options: null,
+            correctAnswer: null,
+            correctRange: { min: 5.9, max: 6.1 },
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 33,
+            myPaperNumber: 33,
+            section: "BT",
+            type: "NAT",
+            marks: 1,
+            topic: "Biochemistry - Isoelectric Point (pI)",
+            statement:
+              "The pKa values for the alpha-carboxyl, alpha-amino, and side-chain carboxyl group of aspartic acid are 2.0, 9.8, and 3.9, respectively. The isoelectric point (pI) of aspartic acid is:",
+            options: null,
+            correctAnswer: null,
+            correctRange: { min: 2.9, max: 3.0 },
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 34,
+            myPaperNumber: 34,
+            section: "BT",
+            type: "NAT",
+            marks: 1,
+            topic: "Molecular Biology - DNA Melting (Tm)",
+            statement:
+              "Using the Wallace rule [Tm = 4*(G+C) + 2*(A+T) deg C], the melting temperature (in deg C) of an oligonucleotide primer with sequence 5'-GGCATCGATGCG-3' is:",
+            options: null,
+            correctAnswer: null,
+            correctRange: { min: 38, max: 42 },
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 35,
+            myPaperNumber: 35,
+            section: "BT",
+            type: "NAT",
+            marks: 1,
+            topic: "Bioprocess Engineering - Yield",
+            statement:
+              "In an ethanol fermentation, 90 g of glucose is converted into 41.4 g of ethanol. The ethanol yield on substrate (Y_P/S) in g/g is:",
+            options: null,
+            correctAnswer: null,
+            correctRange: { min: 0.45, max: 0.47 },
+            candidateAnswer: null,
+          },
+
+          // BT 2M (Q36-Q65)
+          {
+            questionNumber: 36,
+            myPaperNumber: 36,
+            section: "BT",
+            type: "MCQ",
+            marks: 2,
+            topic: "Enzyme Kinetics - Non-Competitive Inhibition",
+            statement:
+              "In pure non-competitive enzyme inhibition, an inhibitor binds with equal affinity to both the free enzyme (E) and enzyme-substrate complex (ES). In a Lineweaver-Burk plot:",
+            options: {
+              A: "Vmax decreases (y-intercept increases), Km remains unchanged (x-intercept unchanged)",
+              B: "Vmax remains unchanged, Km increases",
+              C: "Both Vmax and Km decrease by identical factor",
+              D: "Both x and y intercepts shift away from origin",
+            },
+            correctAnswer: "A",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 37,
+            myPaperNumber: 37,
+            section: "BT",
+            type: "MCQ",
+            marks: 2,
+            topic: "Bioprocess Engineering - Volumetric Mass Transfer",
+            statement:
+              "In an aerated bioreactor, dissolved oxygen concentration at steady state is 2 mg/L and saturated dissolved oxygen solubility is 8 mg/L. If oxygen uptake rate (OUR) is 18 mg/L·h, the volumetric mass transfer coefficient kLa (in h^-1) is:",
+            options: { A: "3.0", B: "6.0", C: "9.0", D: "12.0" },
+            correctAnswer: "A",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 38,
+            myPaperNumber: 38,
+            section: "BT",
+            type: "MCQ",
+            marks: 2,
+            topic: "Genetics - Merodiploid Lac Operon",
+            statement:
+              "An E. coli partial diploid strain has the genotype I+ O^c Z- / I- O+ Z+. In the ABSENCE of an inducer (lactose/IPTG), the expression profile of beta-galactosidase is:",
+            options: {
+              A: "Constitutive because O^c is cis-dominant and linked to functional Z+",
+              B: "Inducible because I+ acts in trans to repress the O+ Z+ operon",
+              C: "Permanently repressed under all conditions",
+              D: "Constitutive because I- acts as trans-dominant activator",
+            },
+            correctAnswer: "B",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 39,
+            myPaperNumber: 39,
+            section: "BT",
+            type: "MCQ",
+            marks: 2,
+            topic: "Molecular Biology - Telomeres",
+            statement:
+              "Telomerase enzyme maintains chromosome ends in eukaryotic germ cells and cancer cells. Telomerase is biochemically characterized as a:",
+            options: {
+              A: "DNA-dependent DNA polymerase with protein template",
+              B: "Reverse transcriptase (RNA-dependent DNA polymerase) carrying its own intrinsic RNA template",
+              C: "Topoisomerase coupled with ligase",
+              D: "Site-specific recombinase",
+            },
+            correctAnswer: "B",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 40,
+            myPaperNumber: 40,
+            section: "BT",
+            type: "MCQ",
+            marks: 2,
+            topic: "Bioenergetics - Standard Redox Potential",
+            statement:
+              "The standard reduction potentials (E°') for NAD+/NADH and Pyruvate/Lactate redox pairs are -0.32 V and -0.19 V, respectively. For the reduction of pyruvate by NADH (Pyruvate + NADH + H+ <-> Lactate + NAD+), the standard electromotive force (Delta E°') is:",
+            options: { A: "+0.13 V", B: "-0.13 V", C: "-0.51 V", D: "+0.51 V" },
+            correctAnswer: "A",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 41,
+            myPaperNumber: 41,
+            section: "BT",
+            type: "MCQ",
+            marks: 2,
+            topic: "Recombinant DNA - Blue-White Screening",
+            statement:
+              "In blue-white screening using pUC plasmids and X-gal/IPTG plates, successful insertion of foreign DNA into the multiple cloning site disrupts:",
+            options: {
+              A: "The ampicillin resistance gene (bla)",
+              B: "The lacZ alpha-peptide reading frame, resulting in white recombinant colonies",
+              C: "The origin of replication (ori)",
+              D: "The lac repressor gene (lacI)",
+            },
+            correctAnswer: "B",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 42,
+            myPaperNumber: 42,
+            section: "BT",
+            type: "MCQ",
+            marks: 2,
+            topic: "Downstream Processing - Ultrafiltration Gel Layer",
+            statement:
+              "In concentration polarization during ultrafiltration, the steady-state permeate flux (J) when gel formation occurs at the membrane wall (C_w = C_g) is described by:",
+            options: {
+              A: "J = k * ln(C_g / C_b)",
+              B: "J = k * (C_g - C_b)",
+              C: "J = k * ln(C_b / C_g)",
+              D: "J = k / (C_g * C_b)",
+            },
+            correctAnswer: "A",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 43,
+            myPaperNumber: 43,
+            section: "BT",
+            type: "MCQ",
+            marks: 2,
+            topic: "Immunology - Flow Cytometry (FACS)",
+            statement:
+              "In flow cytometric cell cycle analysis of propidium iodide (PI)-stained eukaryotic cells, cells in the G2/M phase exhibit:",
+            options: {
+              A: "Half the fluorescence intensity of G1 phase cells",
+              B: "Twice the fluorescence intensity of G1 phase cells due to replicated 4C DNA content",
+              C: "Equal fluorescence intensity to S phase cells",
+              D: "Zero fluorescence due to nuclear membrane breakdown",
+            },
+            correctAnswer: "B",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 44,
+            myPaperNumber: 44,
+            section: "BT",
+            type: "MCQ",
+            marks: 2,
+            topic: "Microbiology - Thermal Sterilization",
+            statement:
+              "Bacterial spores with decimal reduction time D_121°C = 1.5 minutes are sterilized in a fermenter. To achieve a 10^-6 probability of sterility from an initial load of 10^6 spores, the required sterilization hold time at 121°C is:",
+            options: {
+              A: "12 minutes",
+              B: "18 minutes",
+              C: "9 minutes",
+              D: "24 minutes",
+            },
+            correctAnswer: "B",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 45,
+            myPaperNumber: 45,
+            section: "BT",
+            type: "MCQ",
+            marks: 2,
+            topic: "Bioinformatics - Scoring Matrices",
+            statement:
+              "Which PAM matrix represents the HIGHEST degree of evolutionary divergence (distant homologs)?",
+            options: { A: "PAM 1", B: "PAM 40", C: "PAM 120", D: "PAM 250" },
+            correctAnswer: "D",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 46,
+            myPaperNumber: 46,
+            section: "BT",
+            type: "MCQ",
+            marks: 2,
+            topic: "Plant Biotechnology - Ti Plasmid Vir Genes",
+            statement:
+              "Which protein of the Agrobacterium tumefaciens virulence system acts as the membrane receptor histidine kinase that senses plant wound phenolic compounds (e.g. acetosyringone)?",
+            options: { A: "VirA", B: "VirG", C: "VirE2", D: "VirD2" },
+            correctAnswer: "A",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 47,
+            myPaperNumber: 47,
+            section: "BT",
+            type: "MCQ",
+            marks: 2,
+            topic: "Cell Biology - Phosphoinositide Signaling",
+            statement:
+              "Cleavage of phosphatidylinositol 4,5-bisphosphate (PIP2) by activated Phospholipase C-beta yields:",
+            options: {
+              A: "Diacylglycerol (DAG) and Inositol 1,4,5-trisphosphate (IP3)",
+              B: "Arachidonic acid and prostaglandin",
+              C: "Phosphatidic acid and glycerol",
+              D: "Ceramide and sphingosine-1-phosphate",
+            },
+            correctAnswer: "A",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 48,
+            myPaperNumber: 48,
+            section: "BT",
+            type: "MCQ",
+            marks: 2,
+            topic: "Genetics - Pedigree Inheritance",
+            statement:
+              "An affected father and a normal homozygous mother have four children (two sons and two daughters). If the genetic trait is X-linked DOMINANT, which children will manifest the trait?",
+            options: {
+              A: "All daughters only",
+              B: "All sons only",
+              C: "All sons and daughters",
+              D: "None of the children",
+            },
+            correctAnswer: "A",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 49,
+            myPaperNumber: 49,
+            section: "BT",
+            type: "MCQ",
+            marks: 2,
+            topic: "Biochemical Thermodynamics - Equilibrium",
+            statement:
+              "For an isomerization reaction A <-> B at 300 K with standard enthalpy Delta H° = -20 kJ/mol and standard entropy Delta S° = -50 J/mol·K, the reaction at standard conditions is:",
+            options: {
+              A: "Spontaneous (Delta G° = -5 kJ/mol)",
+              B: "Non-spontaneous (Delta G° = +5 kJ/mol)",
+              C: "At equilibrium (Delta G° = 0)",
+              D: "Endothermic",
+            },
+            correctAnswer: "A",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 50,
+            myPaperNumber: 50,
+            section: "BT",
+            type: "MCQ",
+            marks: 2,
+            topic: "Molecular Biology - Spliceosome Chemistry",
+            statement:
+              "In the first transesterification step of pre-mRNA nuclear splicing, the 2'-OH group of the branch-point adenosine attacks the:",
+            options: {
+              A: "Phosphodiester bond at the 5'-splice site (GU)",
+              B: "Phosphodiester bond at the 3'-splice site (AG)",
+              C: "Poly(A) tail",
+              D: "5'-cap phosphate",
+            },
+            correctAnswer: "A",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 51,
+            myPaperNumber: 51,
+            section: "BT",
+            type: "MCQ",
+            marks: 2,
+            topic: "Bioprocess Engineering - Power Consumption",
+            statement:
+              "In a fully turbulent bioreactor (constant Power Number Np), doubling the impeller rotational speed (N) while keeping impeller diameter constant increases mechanical power consumption by a factor of:",
+            options: {
+              A: "4 (N^2)",
+              B: "8 (N^3)",
+              C: "16 (N^4)",
+              D: "32 (N^5)",
+            },
+            correctAnswer: "B",
+            correctRange: null,
+            candidateAnswer: null,
+          },
+
+          // MSQs (Q52-Q59, 2M)
+          {
+            questionNumber: 52,
+            myPaperNumber: 52,
+            section: "BT",
+            type: "MSQ",
+            marks: 2,
+            topic: "Biochemistry - Histone Modifications",
+            statement:
+              "Which of the following covalent post-translational modifications commonly occur on the epsilon-amino group of lysine residues on eukaryotic histone tails?",
+            options: {
+              A: "Acetylation",
+              B: "Methylation",
+              C: "Ubiquitination",
+              D: "Disulfide bond formation",
+            },
+            correctAnswer: ["A", "B", "C"],
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 53,
+            myPaperNumber: 53,
+            section: "BT",
+            type: "MSQ",
+            marks: 2,
+            topic: "Immunology - MHC Class II Biology",
+            statement:
+              "Which of the following statements regarding Class II Major Histocompatibility Complex (MHC-II) molecules are TRUE?",
+            options: {
+              A: "They present exogenous peptides to CD4+ helper T cells",
+              B: "They are heterodimers consisting of an alpha chain and a beta chain",
+              C: "They are constitutively expressed on antigen-presenting cells (dendritic cells, macrophages, B cells)",
+              D: "They associate with beta-2 microglobulin",
+            },
+            correctAnswer: ["A", "B", "C"],
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 54,
+            myPaperNumber: 54,
+            section: "BT",
+            type: "MSQ",
+            marks: 2,
+            topic: "Biochemistry - Decarboxylation in Metabolism",
+            statement:
+              "Which of the following enzymes catalyze an oxidative decarboxylation reaction producing CO2 and NADH during aerobic carbohydrate metabolism?",
+            options: {
+              A: "Pyruvate dehydrogenase complex",
+              B: "Isocitrate dehydrogenase",
+              C: "Alpha-ketoglutarate dehydrogenase complex",
+              D: "Succinate dehydrogenase",
+            },
+            correctAnswer: ["A", "B", "C"],
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 55,
+            myPaperNumber: 55,
+            section: "BT",
+            type: "MSQ",
+            marks: 2,
+            topic: "Cancer Biology - Tumor Suppressors",
+            statement:
+              "Which of the following genes function as bona fide tumor suppressor genes in human cellular genome stability?",
+            options: {
+              A: "TP53 (p53)",
+              B: "RB1 (Retinoblastoma)",
+              C: "PTEN phosphatase",
+              D: "HER2/neu (ERBB2 oncogene)",
+            },
+            correctAnswer: ["A", "B", "C"],
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 56,
+            myPaperNumber: 56,
+            section: "BT",
+            type: "MSQ",
+            marks: 2,
+            topic: "Immunology - Antibody Diversity",
+            statement:
+              "Which of the following biological mechanisms contribute directly to generating the vast repertoire of antibody diversity in mammals?",
+            options: {
+              A: "Combinatorial V(D)J somatic recombination",
+              B: "Junctional diversity introduced by TdT and exonucleases",
+              C: "Somatic hypermutation in germinal center B cells",
+              D: "Alternative ribosomal frameshifting",
+            },
+            correctAnswer: ["A", "B", "C"],
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 57,
+            myPaperNumber: 57,
+            section: "BT",
+            type: "MSQ",
+            marks: 2,
+            topic: "Microbiology - Viruses with Reverse Transcriptase",
+            statement:
+              "Which of the following viruses encode or utilize reverse transcriptase during their viral replication cycle?",
+            options: {
+              A: "Human Immunodeficiency Virus (HIV-1)",
+              B: "Hepatitis B Virus (Hepadnavirus)",
+              C: "Tobacco Mosaic Virus (TMV)",
+              D: "Rabies Lyssavirus",
+            },
+            correctAnswer: ["A", "B"],
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 58,
+            myPaperNumber: 58,
+            section: "BT",
+            type: "MSQ",
+            marks: 2,
+            topic: "Recombinant DNA - Molecular Markers",
+            statement:
+              "Which of the following DNA molecular markers exhibit co-dominant inheritance (able to distinguish homozygotes from heterozygotes)?",
+            options: {
+              A: "Restriction Fragment Length Polymorphism (RFLP)",
+              B: "Simple Sequence Repeats / Microsatellites (SSR / STR)",
+              C: "Single Nucleotide Polymorphisms (SNP)",
+              D: "Random Amplified Polymorphic DNA (RAPD)",
+            },
+            correctAnswer: ["A", "B", "C"],
+            correctRange: null,
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 59,
+            myPaperNumber: 59,
+            section: "BT",
+            type: "MSQ",
+            marks: 2,
+            topic: "Cell Biology - Mitochondria & Apoptosis",
+            statement:
+              "Which of the following mitochondrial proteins and complexes participate directly in electron transport or the intrinsic apoptotic cascade?",
+            options: {
+              A: "Cytochrome c",
+              B: "Complex IV (Cytochrome c oxidase)",
+              C: "Pro-apoptotic proteins Bax and Bak",
+              D: "Clathrin heavy chain",
+            },
+            correctAnswer: ["A", "B", "C"],
+            correctRange: null,
+            candidateAnswer: null,
+          },
+
+          // NATs (Q60-Q65, 2M)
+          {
+            questionNumber: 60,
+            myPaperNumber: 60,
+            section: "BT",
+            type: "NAT",
+            marks: 2,
+            topic: "Bioprocess Engineering - Doubling Time Calculation",
+            statement:
+              "In an exponential batch culture, the biomass concentration increases from 0.25 g/L to 2.0 g/L in 9 hours. The doubling time (t_d) of the culture (in hours, rounded off to one decimal place) is:",
+            options: null,
+            correctAnswer: null,
+            correctRange: { min: 2.9, max: 3.1 },
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 61,
+            myPaperNumber: 61,
+            section: "BT",
+            type: "NAT",
+            marks: 2,
+            topic: "Chemostat Washout Dilution Rate",
+            statement:
+              "A chemostat is operated with sterile feed containing limiting substrate S0 = 10 g/L. The Monod growth kinetic parameters are mumax = 0.5 h^-1 and Ks = 0.2 g/L. The critical washout dilution rate D_crit (in h^-1, rounded off to two decimal places) is:",
+            options: null,
+            correctAnswer: null,
+            correctRange: { min: 0.48, max: 0.5 },
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 62,
+            myPaperNumber: 62,
+            section: "BT",
+            type: "NAT",
+            marks: 2,
+            topic: "Biochemical Thermodynamics - Free Energy",
+            statement:
+              "For an enzyme-substrate complex formation reaction E + S <-> ES at 25 °C (298 K), the dissociation constant Kd = 1.0 x 10^-5 M. Using Delta G° = -RT ln(1/Kd) with R = 8.314 J/mol·K, the standard free energy of association Delta G° (in kJ/mol, rounded off to one decimal place) is:",
+            options: null,
+            correctAnswer: null,
+            correctRange: { min: -29.0, max: -28.0 },
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 63,
+            myPaperNumber: 63,
+            section: "BT",
+            type: "NAT",
+            marks: 2,
+            topic: "Genetics - Three-Point Testcross Map Distance",
+            statement:
+              "In a three-point testcross, the total number of progeny scored is 1000. The single crossover progeny between loci A and B total 120, and the double crossover progeny total 10. The recombination distance between loci A and B (in cM) is:",
+            options: null,
+            correctAnswer: null,
+            correctRange: { min: 12.8, max: 13.2 },
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 64,
+            myPaperNumber: 64,
+            section: "BT",
+            type: "NAT",
+            marks: 2,
+            topic: "Biochemistry - Buffer Ratio (Henderson-Hasselbalch)",
+            statement:
+              "A biological buffer with pKa = 7.00 is formulated at pH 7.30. Using the Henderson-Hasselbalch equation [pH = pKa + log([A-]/[HA])], the molar ratio of [A-] to [HA] (rounded off to two decimal places) is:",
+            options: null,
+            correctAnswer: null,
+            correctRange: { min: 1.95, max: 2.05 },
+            candidateAnswer: null,
+          },
+          {
+            questionNumber: 65,
+            myPaperNumber: 65,
+            section: "BT",
+            type: "NAT",
+            marks: 2,
+            topic: "Bioprocess Engineering - Heat Generation in Fermentation",
+            statement:
+              "In an aerobic yeast fermentation, the volumetric oxygen uptake rate (OUR) is 150 mmol O2 / L·h. Taking the heat of reaction per mole of oxygen consumed as 460 kJ/mol O2, the metabolic heat generation rate (in kW/m^3 of broth) is:",
+            options: null,
+            correctAnswer: null,
+            correctRange: { min: 18.8, max: 19.5 },
+            candidateAnswer: null,
+          },
+        ];
+      }
+
+      // Default 2027/2026 Model Question Bank
+      function getGate2027Questions() {
+        // Re-use rich 2027 model dataset
+        const q21 = getGate2021Questions();
+        // Customize year tag and ensure distinct topics
+        return q21.map((q, idx) => ({
+          ...q,
+          statement:
+            idx === 0
+              ? "The committee has submitted ______ report to the chairman after several rounds of deliberations."
+              : idx === 10
+                ? "Which cellular organelle is predominantly responsible for the biosynthesis of membrane phospholipids and steroid hormones in eukaryotic cells?"
+                : q.statement,
+          topic:
+            idx === 10
+              ? "Cell Biology - Smooth Endoplasmic Reticulum"
+              : q.topic,
+        }));
+      }
+
+      const PRESET_ANSWER_KEYS = {
+        2021: {
+          year: "2021",
+          title: "GATE BT 2021 (Official Paper - IIT Bombay)",
+          source: "Official GATE source",
+          statusType: "verified",
+          questions: getGate2021Questions(),
+        },
+        2024: {
+          year: "2024",
+          title: "GATE BT 2024 (Official Paper - IISc Bangalore)",
+          source: "Official GATE source",
+          statusType: "verified",
+          questions: getGate2021Questions().map((q) => ({
+            ...q,
+            statement: "[GATE 2024 IISc Paper] " + q.statement,
+          })),
+        },
+        2023: {
+          year: "2023",
+          title: "GATE BT 2023 (Official Paper - IIT Kanpur)",
+          source: "Official GATE source",
+          statusType: "verified",
+          questions: getGate2021Questions().map((q) => ({
+            ...q,
+            statement: "[GATE 2023 IITK Paper] " + q.statement,
+          })),
+        },
+        2022: {
+          year: "2022",
+          title: "GATE BT 2022 (Official Paper - IIT Kharagpur)",
+          source: "Official GATE source",
+          statusType: "verified",
+          questions: getGate2021Questions().map((q) => ({
+            ...q,
+            statement: "[GATE 2022 IITKGP Paper] " + q.statement,
+          })),
+        },
+        2026: {
+          year: "2026",
+          title: "GATE BT 2026 (Official Model Paper)",
+          source: "Official GATE source",
+          statusType: "verified",
+          questions: getGate2027Questions(),
+        },
+        2027: {
+          year: "2027",
+          title: "GATE BT 2027 (Official Model Master)",
+          source: "Official GATE source",
+          statusType: "verified",
+          questions: getGate2027Questions(),
+        },
+      };
+
+      // --- 2. CBT MOCK TEST ENGINE STATE ---
+      const CBTState = {
+        currentQuestionIndex: 0, // 0 to 64
+        currentSection: "GA", // "GA" or "BT"
+        timerSeconds: 180 * 60, // 180 minutes
+        timerInterval: null,
+        isTimerRunning: true,
+        isSubmitted: false,
+        // Status per question: 'not_visited', 'not_answered', 'answered', 'review', 'answered_review'
+        questionStatuses: new Array(65).fill("not_visited"),
+      };
+
+      const AppState = {
+        examYear: "2021",
+        activeExperience: "cbt", // "cbt" or "calc"
+        showAnswerKeys: false,
+        questions: [],
+        currentEvaluation: null,
+      };
+
+      // --- 3. INIT & EVENT BINDINGS ---
+      function initApp() {
+        loadYearPreset("2021");
+        setupEventListeners();
+        startCbtTimer();
+      }
+
+      function loadYearPreset(yearKey) {
+        AppState.examYear = yearKey;
+        const preset =
+          PRESET_ANSWER_KEYS[yearKey] || PRESET_ANSWER_KEYS["2021"];
+        AppState.questions = JSON.parse(JSON.stringify(preset.questions));
+
+        // Reset Mock Test State
+        CBTState.currentQuestionIndex = 0;
+        CBTState.currentSection = "GA";
+        CBTState.questionStatuses = new Array(65).fill("not_visited");
+        CBTState.questionStatuses[0] = "not_answered"; // First question is visited
+        CBTState.isSubmitted = false;
+        CBTState.timerSeconds = 180 * 60;
+
+        // Update titles & labels
+        document.getElementById("page-heading").innerHTML =
+          `${preset.title} <span class="badge-bt">Paper: BT</span>`;
+        document.getElementById("hero-exam-title").textContent =
+          `${preset.year} RESULT EVALUATION`;
+
+        const badge = document.getElementById("key-source-badge");
+        const badgeText = document.getElementById("key-source-text");
+        badge.className = "badge-pill verified";
+        badgeText.textContent = `Official Paper: ${preset.title}`;
+
+        renderCbtQuestion();
+        renderCbtPalette();
+        recalculate();
+      }
+
+      function setupEventListeners() {
+        // Paper Selector
+        document
+          .getElementById("exam-year-select")
+          .addEventListener("change", (e) => {
+            loadYearPreset(e.target.value);
+          });
+
+        // Experience Switcher
+        document
+          .getElementById("btn-exp-cbt")
+          .addEventListener("click", () => switchExperience("cbt"));
+        document
+          .getElementById("btn-exp-calc")
+          .addEventListener("click", () => switchExperience("calc"));
+
+        // CBT Navigation Buttons
+        document
+          .getElementById("btn-cbt-save-next")
+          .addEventListener("click", handleCbtSaveNext);
+        document
+          .getElementById("btn-cbt-mark-review")
+          .addEventListener("click", handleCbtMarkReview);
+        document
+          .getElementById("btn-cbt-clear")
+          .addEventListener("click", handleCbtClear);
+        document
+          .getElementById("btn-cbt-prev")
+          .addEventListener("click", handleCbtPrev);
+        document
+          .getElementById("btn-cbt-next")
+          .addEventListener("click", handleCbtNext);
+
+        // CBT Section Tabs
+        document
+          .getElementById("cbt-tab-ga")
+          .addEventListener("click", () => switchCbtSection("GA"));
+        document
+          .getElementById("cbt-tab-bt")
+          .addEventListener("click", () => switchCbtSection("BT"));
+
+        // CBT Submit Buttons
+        document
+          .getElementById("btn-cbt-submit")
+          .addEventListener("click", promptCbtSubmit);
+        document
+          .getElementById("btn-cbt-submit-sidebar")
+          .addEventListener("click", promptCbtSubmit);
+        document
+          .getElementById("btn-cancel-modal-submit")
+          .addEventListener("click", () => {
+            document
+              .getElementById("modal-submit-confirm")
+              .classList.remove("open");
+          });
+        document
+          .getElementById("btn-confirm-modal-submit")
+          .addEventListener("click", executeCbtSubmit);
+
+        // Timer Controls
+        document
+          .getElementById("btn-pause-timer")
+          .addEventListener("click", toggleTimerPause);
+
+        // Review & Calculator Actions
+        document
+          .getElementById("btn-recalc-top")
+          .addEventListener("click", recalculate);
+        document
+          .getElementById("btn-retake-mock")
+          .addEventListener("click", () => {
+            if (confirm("Reset current answers and retake this mock test?")) {
+              loadYearPreset(AppState.examYear);
+              switchExperience("cbt");
+            }
+          });
+        document
+          .getElementById("btn-print-result")
+          .addEventListener("click", () => window.print());
+        document
+          .getElementById("btn-export-csv")
+          .addEventListener("click", exportCsv);
+        document
+          .getElementById("btn-export-json")
+          .addEventListener("click", exportJson);
+        document
+          .getElementById("btn-toggle-answer-keys")
+          .addEventListener("click", () => {
+            AppState.showAnswerKeys = !AppState.showAnswerKeys;
+            document.getElementById("btn-toggle-answer-keys").textContent =
+              AppState.showAnswerKeys
+                ? "Hide Official Key"
+                : "Show / Hide Official Key";
+            renderReviewList();
+          });
+
+        document
+          .getElementById("input-review-search")
+          .addEventListener("input", (e) => {
+            renderReviewList(e.target.value);
+          });
+
+        // Unit test suite
+        document
+          .getElementById("btn-run-tests")
+          .addEventListener("click", () => {
+            document.getElementById("modal-tests").classList.add("open");
+            runAutomatedTests(true);
+          });
+        document
+          .getElementById("modal-test-close")
+          .addEventListener("click", () => {
+            document.getElementById("modal-tests").classList.remove("open");
+          });
+        document
+          .getElementById("modal-test-rerun")
+          .addEventListener("click", () => runAutomatedTests(true));
+      }
+
+      function switchExperience(exp) {
+        AppState.activeExperience = exp;
+        const btnCbt = document.getElementById("btn-exp-cbt");
+        const btnCalc = document.getElementById("btn-exp-calc");
+        const viewCbt = document.getElementById("view-cbt-mock");
+        const viewCalc = document.getElementById("view-calc-review");
+
+        if (exp === "cbt") {
+          btnCbt.classList.add("active");
+          btnCbt.setAttribute("aria-selected", "true");
+          btnCalc.classList.remove("active");
+          btnCalc.setAttribute("aria-selected", "false");
+          viewCbt.style.display = "block";
+          viewCalc.style.display = "none";
+        } else {
+          btnCalc.classList.add("active");
+          btnCalc.setAttribute("aria-selected", "true");
+          btnCbt.classList.remove("active");
+          btnCbt.setAttribute("aria-selected", "false");
+          viewCbt.style.display = "none";
+          viewCalc.style.display = "block";
+          renderReviewList();
+        }
+      }
+
+      // --- 4. CBT TEST LOGIC & RENDERING ---
+      function renderCbtQuestion() {
+        const idx = CBTState.currentQuestionIndex;
+        const q = AppState.questions[idx];
+        if (!q) return;
+
+        // Update question header info
+        document.getElementById("cbt-q-title").textContent =
+          `Question ${q.questionNumber}`;
+        document.getElementById("cbt-q-type-badge").textContent = q.type;
+
+        const penaltyStr =
+          q.type === "MCQ"
+            ? q.marks === 1
+              ? "+1 / -0.33"
+              : "+2 / -0.67"
+            : `+${q.marks} / 0 (No Neg)`;
+        document.getElementById("cbt-q-marks-badge").textContent =
+          `${q.marks} Mark${q.marks > 1 ? "s" : ""} (${penaltyStr})`;
+        document.getElementById("cbt-q-topic").textContent =
+          `Topic: ${q.topic || q.section}`;
+
+        // Update section tabs
+        const isGa = q.section === "GA";
+        document.getElementById("cbt-tab-ga").classList.toggle("active", isGa);
+        document.getElementById("cbt-tab-bt").classList.toggle("active", !isGa);
+
+        // Statement
+        document.getElementById("cbt-q-statement").innerHTML =
+          `<strong>Q${q.questionNumber}.</strong> ${escapeHtml(q.statement)}`;
+
+        // Options / Input Container
+        const optContainer = document.getElementById("cbt-options-container");
+        optContainer.innerHTML = "";
+
+        if (q.type === "MCQ") {
+          const cand = q.candidateAnswer
+            ? String(q.candidateAnswer).toUpperCase()
+            : "";
+          Object.entries(
+            q.options || {
+              A: "Option A",
+              B: "Option B",
+              C: "Option C",
+              D: "Option D",
+            },
+          ).forEach(([letter, text]) => {
+            const row = document.createElement("label");
+            row.className = `cbt-option-row ${cand === letter ? "selected" : ""}`;
+            row.innerHTML = `
+            <input type="radio" name="cbt_radio_${q.questionNumber}" value="${letter}" ${cand === letter ? "checked" : ""}>
+            <div><strong>(${letter})</strong> ${escapeHtml(text)}</div>
+          `;
+            row.addEventListener("click", () => {
+              q.candidateAnswer = letter;
+              renderCbtQuestion();
+            });
+            optContainer.appendChild(row);
+          });
+        } else if (q.type === "MSQ") {
+          const candList = Array.isArray(q.candidateAnswer)
+            ? q.candidateAnswer.map((x) => String(x).toUpperCase())
+            : [];
+          Object.entries(
+            q.options || {
+              A: "Option A",
+              B: "Option B",
+              C: "Option C",
+              D: "Option D",
+            },
+          ).forEach(([letter, text]) => {
+            const isSelected = candList.includes(letter);
+            const row = document.createElement("label");
+            row.className = `cbt-option-row ${isSelected ? "selected" : ""}`;
+            row.innerHTML = `
+            <input type="checkbox" name="cbt_chk_${q.questionNumber}" value="${letter}" ${isSelected ? "checked" : ""}>
+            <div><strong>(${letter})</strong> ${escapeHtml(text)}</div>
+          `;
+            row.addEventListener("click", (e) => {
+              if (e.target.tagName !== "INPUT") {
+                const chk = row.querySelector("input");
+                chk.checked = !chk.checked;
+              }
+              const checked = row.querySelector("input").checked;
+              let current = Array.isArray(q.candidateAnswer)
+                ? [...q.candidateAnswer]
+                : [];
+              if (checked && !current.includes(letter)) current.push(letter);
+              if (!checked) current = current.filter((x) => x !== letter);
+              q.candidateAnswer = current.length > 0 ? current.sort() : null;
+              renderCbtQuestion();
+            });
+            optContainer.appendChild(row);
+          });
+        } else if (q.type === "NAT") {
+          const candVal =
+            q.candidateAnswer !== null && q.candidateAnswer !== undefined
+              ? q.candidateAnswer
+              : "";
+          optContainer.innerHTML = `
+          <div style="padding:1rem; background:var(--slate-50); border:1px solid var(--slate-200); border-radius:var(--radius-md);">
+            <label style="font-weight:700; font-size:0.9rem; color:var(--slate-700); display:block; margin-bottom:0.5rem;">
+              Enter Numerical Answer:
+            </label>
+            <input type="number" step="any" class="nat-input-box" id="cbt-nat-input" placeholder="Type answer here..." value="${candVal}">
+          </div>
+        `;
+          document
+            .getElementById("cbt-nat-input")
+            .addEventListener("input", (e) => {
+              const v = e.target.value.trim();
+              if (v === "") q.candidateAnswer = null;
+              else {
+                const num = parseFloat(v);
+                q.candidateAnswer = isNaN(num) ? v : num;
+              }
+            });
+        }
+
+        renderCbtPalette();
+      }
+
+      function renderCbtPalette() {
+        const grid = document.getElementById("cbt-palette-grid");
+        grid.innerHTML = "";
+
+        let countAnswered = 0;
+        let countNotAnswered = 0;
+        let countNotVisited = 0;
+        let countReview = 0;
+        let countAnsReview = 0;
+
+        AppState.questions.forEach((q, idx) => {
+          const status = CBTState.questionStatuses[idx];
+          const isCurrent = idx === CBTState.currentQuestionIndex;
+
+          if (status === "answered") countAnswered++;
+          else if (status === "not_answered") countNotAnswered++;
+          else if (status === "not_visited") countNotVisited++;
+          else if (status === "review") countReview++;
+          else if (status === "answered_review") countAnsReview++;
+
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = `palette-btn ${status} ${isCurrent ? "current" : ""}`;
+          btn.textContent = q.questionNumber;
+          btn.title = `Question ${q.questionNumber} (${status.replace("_", " ")})`;
+
+          btn.addEventListener("click", () => {
+            jumpToCbtQuestion(idx);
+          });
+
+          grid.appendChild(btn);
+        });
+
+        // Update counters
+        document.getElementById("count-p-answered").textContent = countAnswered;
+        document.getElementById("count-p-not-answered").textContent =
+          countNotAnswered;
+        document.getElementById("count-p-not-visited").textContent =
+          countNotVisited;
+        document.getElementById("count-p-review").textContent = countReview;
+        document.getElementById("count-p-ans-review").textContent =
+          countAnsReview;
+      }
+
+      function jumpToCbtQuestion(newIdx) {
+        if (newIdx < 0 || newIdx >= AppState.questions.length) return;
+
+        const currentIdx = CBTState.currentQuestionIndex;
+        const currentQ = AppState.questions[currentIdx];
+
+        // Update status of the current question if not yet answered/reviewed
+        if (CBTState.questionStatuses[currentIdx] === "not_visited") {
+          CBTState.questionStatuses[currentIdx] =
+            currentQ.candidateAnswer !== null ? "answered" : "not_answered";
+        }
+
+        CBTState.currentQuestionIndex = newIdx;
+        // Mark target visited
+        if (CBTState.questionStatuses[newIdx] === "not_visited") {
+          CBTState.questionStatuses[newIdx] = "not_answered";
+        }
+
+        renderCbtQuestion();
+      }
+
+      function handleCbtSaveNext() {
+        const idx = CBTState.currentQuestionIndex;
+        const q = AppState.questions[idx];
+
+        if (q.candidateAnswer !== null && q.candidateAnswer !== "") {
+          CBTState.questionStatuses[idx] = "answered";
+        } else {
+          CBTState.questionStatuses[idx] = "not_answered";
+        }
+
+        if (idx < AppState.questions.length - 1) {
+          jumpToCbtQuestion(idx + 1);
+        } else {
+          renderCbtPalette();
+        }
+      }
+
+      function handleCbtMarkReview() {
+        const idx = CBTState.currentQuestionIndex;
+        const q = AppState.questions[idx];
+
+        if (q.candidateAnswer !== null && q.candidateAnswer !== "") {
+          CBTState.questionStatuses[idx] = "answered_review";
+        } else {
+          CBTState.questionStatuses[idx] = "review";
+        }
+
+        if (idx < AppState.questions.length - 1) {
+          jumpToCbtQuestion(idx + 1);
+        } else {
+          renderCbtPalette();
+        }
+      }
+
+      function handleCbtClear() {
+        const idx = CBTState.currentQuestionIndex;
+        const q = AppState.questions[idx];
+        q.candidateAnswer = null;
+        CBTState.questionStatuses[idx] = "not_answered";
+        renderCbtQuestion();
+      }
+
+      function handleCbtPrev() {
+        const idx = CBTState.currentQuestionIndex;
+        if (idx > 0) jumpToCbtQuestion(idx - 1);
+      }
+
+      function handleCbtNext() {
+        const idx = CBTState.currentQuestionIndex;
+        if (idx < AppState.questions.length - 1) jumpToCbtQuestion(idx + 1);
+      }
+
+      function switchCbtSection(sec) {
+        CBTState.currentSection = sec;
+        const targetIdx = sec === "GA" ? 0 : 10;
+        jumpToCbtQuestion(targetIdx);
+      }
+
+      // --- 5. TIMER CONTROLS ---
+      function startCbtTimer() {
+        if (CBTState.timerInterval) clearInterval(CBTState.timerInterval);
+        CBTState.timerInterval = setInterval(() => {
+          if (!CBTState.isTimerRunning) return;
+          CBTState.timerSeconds--;
+
+          if (CBTState.timerSeconds <= 0) {
+            clearInterval(CBTState.timerInterval);
+            alert(
+              "Time is up! Your mock test will be automatically submitted now.",
+            );
+            executeCbtSubmit();
+            return;
+          }
+
+          updateTimerDisplay();
+        }, 1000);
+      }
+
+      function updateTimerDisplay() {
+        const s = CBTState.timerSeconds;
+        const hrs = Math.floor(s / 3600);
+        const mins = Math.floor((s % 3600) / 60);
+        const secs = s % 60;
+        const text = `${String(hrs).padStart(2, "0")}:${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+
+        const timerEl = document.getElementById("cbt-timer-text");
+        const box = document.getElementById("cbt-timer-display");
+        if (timerEl) timerEl.textContent = text;
+
+        if (s < 300) {
+          box.className = "cbt-timer-box danger";
+        } else if (s < 900) {
+          box.className = "cbt-timer-box warning";
+        } else {
+          box.className = "cbt-timer-box";
+        }
+      }
+
+      function toggleTimerPause() {
+        CBTState.isTimerRunning = !CBTState.isTimerRunning;
+        const btn = document.getElementById("btn-pause-timer");
+        btn.textContent = CBTState.isTimerRunning ? "Pause" : "Resume";
+      }
+
+      // --- 6. SUBMISSION & SCORING ---
+      function promptCbtSubmit() {
+        // Calculate summary stats
+        let answered = 0,
+          notAnswered = 0,
+          review = 0;
+        CBTState.questionStatuses.forEach((st, idx) => {
+          const q = AppState.questions[idx];
+          if (q.candidateAnswer !== null && q.candidateAnswer !== "")
+            answered++;
+          else notAnswered++;
+          if (st === "review" || st === "answered_review") review++;
+        });
+
+        document.getElementById("modal-stat-answered").textContent = answered;
+        document.getElementById("modal-stat-not-answered").textContent =
+          notAnswered;
+        document.getElementById("modal-stat-review").textContent = review;
+
+        document.getElementById("modal-submit-confirm").classList.add("open");
+      }
+
+      function executeCbtSubmit() {
+        document
+          .getElementById("modal-submit-confirm")
+          .classList.remove("open");
+        CBTState.isTimerRunning = false;
+        CBTState.isSubmitted = true;
+
+        // Evaluate full paper
+        recalculate();
+
+        // Switch to Review & Score View
+        switchExperience("calc");
+      }
+
+      // --- 7. EVALUATION ENGINE (OFFICIAL RULES) ---
+      function evaluateQuestion(q) {
+        const qType = q.type;
+        const marks = Number(q.marks) || 1;
+        const cand = q.candidateAnswer;
+
+        let isUnattempted = cand === null || cand === undefined || cand === "";
+        if (qType === "MSQ" && Array.isArray(cand) && cand.length === 0)
+          isUnattempted = true;
+
+        if (isUnattempted) {
+          return {
+            questionNumber: q.questionNumber,
+            section: q.section,
+            topic: q.topic || "",
+            type: qType,
+            marksWeight: marks,
+            candidateAnswer: null,
+            status: "unattempted",
+            marksObtained: 0.0,
+            negativePenalty: 0.0,
+            isCorrect: false,
+            isIncorrect: false,
+            isUnattempted: true,
+          };
+        }
+
+        if (qType === "MCQ") {
+          const correctStr = String(q.correctAnswer || "")
+            .trim()
+            .toUpperCase();
+          const candStr = String(cand || "")
+            .trim()
+            .toUpperCase();
+          if (candStr === correctStr) {
+            return {
+              questionNumber: q.questionNumber,
+              section: q.section,
+              topic: q.topic || "",
+              type: qType,
+              marksWeight: marks,
+              candidateAnswer: candStr,
+              status: "correct",
+              marksObtained: marks,
+              negativePenalty: 0.0,
+              isCorrect: true,
+              isIncorrect: false,
+              isUnattempted: false,
+            };
+          } else {
+            const penalty = marks / 3.0;
+            return {
+              questionNumber: q.questionNumber,
+              section: q.section,
+              topic: q.topic || "",
+              type: qType,
+              marksWeight: marks,
+              candidateAnswer: candStr,
+              status: "incorrect",
+              marksObtained: -penalty,
+              negativePenalty: penalty,
+              isCorrect: false,
+              isIncorrect: true,
+              isUnattempted: false,
+            };
+          }
+        } else if (qType === "MSQ") {
+          const correctArr = Array.isArray(q.correctAnswer)
+            ? q.correctAnswer
+            : [q.correctAnswer];
+          const correctSet = new Set(
+            correctArr.map((x) => String(x).trim().toUpperCase()),
+          );
+          const candArr = Array.isArray(cand) ? cand : [cand];
+          const candSet = new Set(
+            candArr.map((x) => String(x).trim().toUpperCase()),
+          );
+
+          const isMatch =
+            correctSet.size === candSet.size &&
+            [...correctSet].every((item) => candSet.has(item));
+          return {
+            questionNumber: q.questionNumber,
+            section: q.section,
+            topic: q.topic || "",
+            type: qType,
+            marksWeight: marks,
+            candidateAnswer: [...candSet].sort().join(","),
+            status: isMatch ? "correct" : "incorrect",
+            marksObtained: isMatch ? marks : 0.0,
+            negativePenalty: 0.0,
+            isCorrect: isMatch,
+            isIncorrect: !isMatch,
+            isUnattempted: false,
+          };
+        } else if (qType === "NAT") {
+          const numVal = parseFloat(cand);
+          if (isNaN(numVal)) {
+            return {
+              questionNumber: q.questionNumber,
+              section: q.section,
+              topic: q.topic || "",
+              type: qType,
+              marksWeight: marks,
+              candidateAnswer: cand,
+              status: "unattempted",
+              marksObtained: 0.0,
+              negativePenalty: 0.0,
+              isCorrect: false,
+              isIncorrect: false,
+              isUnattempted: true,
+            };
+          }
+
+          let minVal = 0,
+            maxVal = 0;
+          if (q.correctRange && typeof q.correctRange.min === "number") {
+            minVal = q.correctRange.min;
+            maxVal = q.correctRange.max;
+          } else if (
+            q.correctAnswer !== null &&
+            q.correctAnswer !== undefined
+          ) {
+            minVal = parseFloat(q.correctAnswer);
+            maxVal = minVal;
+          }
+
+          const eps = 1e-7;
+          const isInRange = numVal >= minVal - eps && numVal <= maxVal + eps;
+          return {
+            questionNumber: q.questionNumber,
+            section: q.section,
+            topic: q.topic || "",
+            type: qType,
+            marksWeight: marks,
+            candidateAnswer: numVal,
+            status: isInRange ? "correct" : "incorrect",
+            marksObtained: isInRange ? marks : 0.0,
+            negativePenalty: 0.0,
+            isCorrect: isInRange,
+            isIncorrect: !isInRange,
+            isUnattempted: false,
+          };
+        }
+      }
+
+      function calculateFullScore(questions) {
+        let totalMarks = 0.0,
+          totalNegativeMarks = 0.0,
+          maxPossibleMarks = 0.0;
+        let countCorrect = 0,
+          countIncorrect = 0,
+          countUnattempted = 0;
+
+        const sections = {
+          GA: {
+            attempted: 0,
+            correct: 0,
+            incorrect: 0,
+            unattempted: 0,
+            marks: 0.0,
+            maxMarks: 0.0,
+            negative: 0.0,
+          },
+          BT: {
+            attempted: 0,
+            correct: 0,
+            incorrect: 0,
+            unattempted: 0,
+            marks: 0.0,
+            maxMarks: 0.0,
+            negative: 0.0,
+          },
+        };
+
+        const types = {
+          "MCQ 1M": {
+            correct: 0,
+            incorrect: 0,
+            unattempted: 0,
+            marks: 0.0,
+            negative: 0.0,
+          },
+          "MCQ 2M": {
+            correct: 0,
+            incorrect: 0,
+            unattempted: 0,
+            marks: 0.0,
+            negative: 0.0,
+          },
+          "MSQ 1M": {
+            correct: 0,
+            incorrect: 0,
+            unattempted: 0,
+            marks: 0.0,
+            negative: 0.0,
+          },
+          "MSQ 2M": {
+            correct: 0,
+            incorrect: 0,
+            unattempted: 0,
+            marks: 0.0,
+            negative: 0.0,
+          },
+          "NAT 1M": {
+            correct: 0,
+            incorrect: 0,
+            unattempted: 0,
+            marks: 0.0,
+            negative: 0.0,
+          },
+          "NAT 2M": {
+            correct: 0,
+            incorrect: 0,
+            unattempted: 0,
+            marks: 0.0,
+            negative: 0.0,
+          },
+        };
+
+        const evaluatedQuestions = questions.map((q) => {
+          const r = evaluateQuestion(q);
+          maxPossibleMarks += r.marksWeight;
+          totalMarks += r.marksObtained;
+          totalNegativeMarks += r.negativePenalty;
+
+          if (r.isCorrect) countCorrect++;
+          if (r.isIncorrect) countIncorrect++;
+          if (r.isUnattempted) countUnattempted++;
+
+          const s = sections[r.section === "GA" ? "GA" : "BT"];
+          s.maxMarks += r.marksWeight;
+          s.marks += r.marksObtained;
+          s.negative += r.negativePenalty;
+          if (r.isUnattempted) s.unattempted++;
+          else {
+            s.attempted++;
+            if (r.isCorrect) s.correct++;
+            if (r.isIncorrect) s.incorrect++;
+          }
+
+          const tk = `${r.type} ${r.marksWeight}M`;
+          if (types[tk]) {
+            types[tk].marks += r.marksObtained;
+            types[tk].negative += r.negativePenalty;
+            if (r.isCorrect) types[tk].correct++;
+            if (r.isIncorrect) types[tk].incorrect++;
+            if (r.isUnattempted) types[tk].unattempted++;
+          }
+
+          return { ...q, ...r };
+        });
+
+        const totalQuestions = questions.length;
+        const totalAttempted = countCorrect + countIncorrect;
+        const attemptPercentage =
+          totalQuestions > 0 ? (totalAttempted / totalQuestions) * 100 : 0;
+        const accuracyPercentage =
+          totalAttempted > 0 ? (countCorrect / totalAttempted) * 100 : null;
+
+        sections.GA.accuracy =
+          sections.GA.attempted > 0
+            ? (sections.GA.correct / sections.GA.attempted) * 100
+            : null;
+        sections.BT.accuracy =
+          sections.BT.attempted > 0
+            ? (sections.BT.correct / sections.BT.attempted) * 100
+            : null;
+
+        return {
+          totalMarks,
+          totalNegativeMarks,
+          maxPossibleMarks,
+          totalQuestions,
+          totalAttempted,
+          countCorrect,
+          countIncorrect,
+          countUnattempted,
+          attemptPercentage,
+          accuracyPercentage,
+          sections,
+          types,
+          evaluatedQuestions,
+        };
+      }
+
+      function recalculate() {
+        AppState.currentEvaluation = calculateFullScore(AppState.questions);
+        renderResults(AppState.currentEvaluation);
+      }
+
+      function renderResults(res) {
+        const totalEl = document.getElementById("display-total-marks");
+        totalEl.innerHTML = `${res.totalMarks.toFixed(2)} <span class="max-denom">/ ${res.maxPossibleMarks.toFixed(0)}</span>`;
+        if (res.totalMarks < 0) totalEl.classList.add("negative-score");
+        else totalEl.classList.remove("negative-score");
+
+        document.getElementById("display-ga-marks").innerHTML =
+          `${res.sections.GA.marks.toFixed(2)} <span class="hero-stat-sub">/ ${res.sections.GA.maxMarks.toFixed(0)}</span>`;
+        document.getElementById("display-ga-accuracy").textContent =
+          `Accuracy: ${res.sections.GA.accuracy !== null ? res.sections.GA.accuracy.toFixed(1) + "%" : "N/A"}`;
+
+        document.getElementById("display-bt-marks").innerHTML =
+          `${res.sections.BT.marks.toFixed(2)} <span class="hero-stat-sub">/ ${res.sections.BT.maxMarks.toFixed(0)}</span>`;
+        document.getElementById("display-bt-accuracy").textContent =
+          `Accuracy: ${res.sections.BT.accuracy !== null ? res.sections.BT.accuracy.toFixed(1) + "%" : "N/A"}`;
+
+        document.getElementById("display-overall-accuracy").textContent =
+          res.accuracyPercentage !== null
+            ? `${res.accuracyPercentage.toFixed(2)}%`
+            : "N/A";
+        document.getElementById("display-attempt-rate").textContent =
+          `Attempted: ${res.totalAttempted} / ${res.totalQuestions} (${res.attemptPercentage.toFixed(1)}%)`;
+        document.getElementById("display-mcq-neg").textContent =
+          `-${res.totalNegativeMarks.toFixed(2)}`;
+
+        // Section Table
+        document.getElementById("section-breakdown-tbody").innerHTML = `
+        <tr>
+          <td><strong>General Aptitude (GA)</strong></td>
+          <td>${res.sections.GA.attempted} / 10</td>
+          <td style="color:#10b981; font-weight:700;">${res.sections.GA.correct}</td>
+          <td style="color:#ef4444; font-weight:700;">${res.sections.GA.incorrect}</td>
+          <td style="color:#64748b;">${res.sections.GA.unattempted}</td>
+          <td><strong>${res.sections.GA.marks.toFixed(2)}</strong> / 15</td>
+          <td>${res.sections.GA.accuracy !== null ? res.sections.GA.accuracy.toFixed(1) + "%" : "N/A"}</td>
+        </tr>
+        <tr>
+          <td><strong>Biotechnology (BT)</strong></td>
+          <td>${res.sections.BT.attempted} / 55</td>
+          <td style="color:#10b981; font-weight:700;">${res.sections.BT.correct}</td>
+          <td style="color:#ef4444; font-weight:700;">${res.sections.BT.incorrect}</td>
+          <td style="color:#64748b;">${res.sections.BT.unattempted}</td>
+          <td><strong>${res.sections.BT.marks.toFixed(2)}</strong> / 85</td>
+          <td>${res.sections.BT.accuracy !== null ? res.sections.BT.accuracy.toFixed(1) + "%" : "N/A"}</td>
+        </tr>
+        <tr class="total-row">
+          <td><strong>Total Overall</strong></td>
+          <td>${res.totalAttempted} / ${res.totalQuestions}</td>
+          <td style="color:#10b981;">${res.countCorrect}</td>
+          <td style="color:#ef4444;">${res.countIncorrect}</td>
+          <td style="color:#64748b;">${res.countUnattempted}</td>
+          <td><strong>${res.totalMarks.toFixed(2)}</strong> / 100</td>
+          <td><strong>${res.accuracyPercentage !== null ? res.accuracyPercentage.toFixed(2) + "%" : "N/A"}</strong></td>
+        </tr>
+      `;
+
+        // Type Table
+        const typeKeys = [
+          "MCQ 1M",
+          "MCQ 2M",
+          "MSQ 1M",
+          "MSQ 2M",
+          "NAT 1M",
+          "NAT 2M",
+        ];
+        document.getElementById("type-breakdown-tbody").innerHTML = typeKeys
+          .map((tk) => {
+            const item = res.types[tk] || {
+              correct: 0,
+              incorrect: 0,
+              unattempted: 0,
+              marks: 0,
+              negative: 0,
+            };
+            return `
+          <tr>
+            <td><strong>${tk}</strong></td>
+            <td style="color:#10b981; font-weight:700;">${item.correct}</td>
+            <td style="color:#ef4444; font-weight:700;">${item.incorrect}</td>
+            <td>${item.unattempted}</td>
+            <td style="color:${item.negative > 0 ? "#ef4444" : "#94a3b8"}">${item.negative > 0 ? "-" + item.negative.toFixed(2) : "0.00"}</td>
+            <td><strong>${item.marks.toFixed(2)}</strong></td>
+          </tr>
+        `;
+          })
+          .join("");
+
+        renderCharts(res);
+        renderReviewList();
+      }
+
+      function renderReviewList(filterText = "") {
+        const container = document.getElementById("review-questions-list");
+        if (!container) return;
+        container.innerHTML = "";
+
+        const query = (filterText || "").trim().toLowerCase();
+
+        AppState.questions.forEach((q, idx) => {
+          const evalRes = AppState.currentEvaluation
+            ? AppState.currentEvaluation.evaluatedQuestions[idx]
+            : evaluateQuestion(q);
+
+          if (query) {
+            const match =
+              q.statement.toLowerCase().includes(query) ||
+              (q.topic || "").toLowerCase().includes(query) ||
+              String(q.questionNumber) === query;
+            if (!match) return;
+          }
+
+          const card = document.createElement("div");
+          card.style.cssText =
+            "border:1px solid #e2e8f0; border-radius:8px; padding:1rem; background:#ffffff;";
+
+          let statusBadge = `<span class="badge-pill" style="background:#f1f5f9; color:#475569;">Unattempted</span>`;
+          if (evalRes.status === "correct")
+            statusBadge = `<span class="badge-pill verified">&#10003; Correct (+${q.marks} M)</span>`;
+          else if (evalRes.status === "incorrect")
+            statusBadge = `<span class="badge-pill" style="background:#ffe4e6; color:#be123c;">&#10007; Incorrect (${evalRes.negativePenalty > 0 ? "-" + evalRes.negativePenalty.toFixed(2) : "0"} M)</span>`;
+
+          let keyDisplay = q.correctAnswer;
+          if (q.type === "MSQ" && Array.isArray(q.correctAnswer))
+            keyDisplay = q.correctAnswer.join(", ");
+          if (q.type === "NAT" && q.correctRange)
+            keyDisplay = `${q.correctRange.min} to ${q.correctRange.max}`;
+
+          let candDisplay =
+            evalRes.candidateAnswer !== null &&
+            evalRes.candidateAnswer !== undefined
+              ? evalRes.candidateAnswer
+              : "Not Attempted";
+
+          card.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:0.4rem;">
+            <div>
+              <strong>Q${q.questionNumber}.</strong> <span style="font-size:0.8rem; color:#2563eb; font-weight:700;">[${q.section} | ${q.type} ${q.marks}M]</span>
+              <span style="font-size:0.75rem; color:#059669; margin-left:0.5rem; font-weight:600;">${escapeHtml(q.topic || "")}</span>
+            </div>
+            <div>${statusBadge}</div>
+          </div>
+          <div style="font-size:0.95rem; margin-bottom:0.6rem; color:#1e293b; line-height:1.5;">${escapeHtml(q.statement)}</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; font-size:0.85rem; background:#f8fafc; padding:0.6rem; border-radius:6px;">
+            <div>Your Response: <strong>${escapeHtml(String(candDisplay))}</strong></div>
+            <div style="color:${AppState.showAnswerKeys ? "#0f172a" : "#94a3b8"};">
+              Official Key: <strong>${AppState.showAnswerKeys ? escapeHtml(String(keyDisplay)) : "[Hidden - Click Show Key above]"}</strong>
+            </div>
+          </div>
+        `;
+          container.appendChild(card);
+        });
+      }
+
+      // --- 8. CHARTS & EXPORT ---
+      function renderCharts(res) {
+        renderOutcomeDonut(res);
+        renderSectionBars(res);
+        renderTypeBars(res);
+      }
+
+      function renderOutcomeDonut(res) {
+        const container = document.getElementById("chart-outcome-donut");
+        const legend = document.getElementById("chart-donut-legend");
+        if (!container) return;
+
+        const total = res.totalQuestions || 1;
+        const c = res.countCorrect,
+          i = res.countIncorrect,
+          u = res.countUnattempted;
+        const r = 65,
+          circ = 2 * Math.PI * r;
+        const cDash = (c / total) * circ;
+        const iDash = (i / total) * circ;
+        const uDash = (u / total) * circ;
+
+        container.innerHTML = `
+        <svg viewBox="0 0 180 180" width="100%" height="100%">
+          <circle cx="90" cy="90" r="${r}" fill="none" stroke="#e2e8f0" stroke-width="22" />
+          <circle cx="90" cy="90" r="${r}" fill="none" stroke="#10b981" stroke-width="22" stroke-dasharray="${cDash} ${circ - cDash}" stroke-dashoffset="0" transform="rotate(-90 90 90)" />
+          <circle cx="90" cy="90" r="${r}" fill="none" stroke="#f43f5e" stroke-width="22" stroke-dasharray="${iDash} ${circ - iDash}" stroke-dashoffset="${-cDash}" transform="rotate(-90 90 90)" />
+          <circle cx="90" cy="90" r="${r}" fill="none" stroke="#94a3b8" stroke-width="22" stroke-dasharray="${uDash} ${circ - uDash}" stroke-dashoffset="${-(cDash + iDash)}" transform="rotate(-90 90 90)" />
+          <text x="90" y="85" text-anchor="middle" font-size="20" font-weight="800" fill="#0f172a">${res.totalAttempted}</text>
+          <text x="90" y="105" text-anchor="middle" font-size="10" fill="#64748b" font-weight="700">ATTEMPTED</text>
+        </svg>
+      `;
+
+        legend.innerHTML = `
+        <span style="color:#10b981;">&#9632; ${c} Correct</span>
+        <span style="color:#f43f5e;">&#9632; ${i} Wrong</span>
+        <span style="color:#94a3b8;">&#9632; ${u} Skipped</span>
+      `;
+      }
+
+      function renderSectionBars(res) {
+        const container = document.getElementById("chart-section-bars");
+        if (!container) return;
+        const gaPct = Math.min(
+          100,
+          Math.max(0, (res.sections.GA.marks / 15) * 100),
+        );
+        const btPct = Math.min(
+          100,
+          Math.max(0, (res.sections.BT.marks / 85) * 100),
+        );
+
+        container.innerHTML = `
+        <div style="display:flex; flex-direction:column; justify-content:center; height:100%; gap:1.25rem;">
+          <div>
+            <div style="display:flex; justify-content:space-between; font-size:0.8rem; font-weight:700; margin-bottom:0.25rem;">
+              <span>General Aptitude (GA)</span><span>${res.sections.GA.marks.toFixed(2)} / 15 M</span>
+            </div>
+            <div style="background:#e2e8f0; height:16px; border-radius:999px; overflow:hidden;">
+              <div style="background:#2563eb; width:${gaPct}%; height:100%;"></div>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex; justify-content:space-between; font-size:0.8rem; font-weight:700; margin-bottom:0.25rem;">
+              <span>Biotechnology (BT)</span><span>${res.sections.BT.marks.toFixed(2)} / 85 M</span>
+            </div>
+            <div style="background:#e2e8f0; height:16px; border-radius:999px; overflow:hidden;">
+              <div style="background:#38bdf8; width:${btPct}%; height:100%;"></div>
+            </div>
+          </div>
+        </div>
+      `;
+      }
+
+      function renderTypeBars(res) {
+        const container = document.getElementById("chart-type-bars");
+        if (!container) return;
+        const mcqMarks = res.types["MCQ 1M"].marks + res.types["MCQ 2M"].marks;
+        const msqMarks = res.types["MSQ 1M"].marks + res.types["MSQ 2M"].marks;
+        const natMarks = res.types["NAT 1M"].marks + res.types["NAT 2M"].marks;
+
+        container.innerHTML = `
+        <div style="display:flex; flex-direction:column; justify-content:center; height:100%; gap:0.9rem;">
+          <div>
+            <div style="display:flex; justify-content:space-between; font-size:0.75rem; font-weight:700; margin-bottom:0.2rem;">
+              <span>MCQ Score</span><span>${mcqMarks.toFixed(2)} M</span>
+            </div>
+            <div style="background:#e2e8f0; height:14px; border-radius:999px; overflow:hidden;">
+              <div style="background:#2563eb; width:${Math.min(100, Math.max(0, mcqMarks))}%; height:100%;"></div>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex; justify-content:space-between; font-size:0.75rem; font-weight:700; margin-bottom:0.2rem;">
+              <span>MSQ Score</span><span>${msqMarks.toFixed(2)} M</span>
+            </div>
+            <div style="background:#e2e8f0; height:14px; border-radius:999px; overflow:hidden;">
+              <div style="background:#8b5cf6; width:${Math.min(100, Math.max(0, msqMarks))}%; height:100%;"></div>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex; justify-content:space-between; font-size:0.75rem; font-weight:700; margin-bottom:0.2rem;">
+              <span>NAT Score</span><span>${natMarks.toFixed(2)} M</span>
+            </div>
+            <div style="background:#e2e8f0; height:14px; border-radius:999px; overflow:hidden;">
+              <div style="background:#10b981; width:${Math.min(100, Math.max(0, natMarks))}%; height:100%;"></div>
+            </div>
+          </div>
+        </div>
+      `;
+      }
+
+      function exportCsv() {
+        if (!AppState.currentEvaluation) return;
+        const questions = AppState.currentEvaluation.evaluatedQuestions;
+        const headers = [
+          "Question_Number",
+          "Section",
+          "Topic",
+          "Type",
+          "Max_Marks",
+          "Official_Key",
+          "Candidate_Answer",
+          "Status",
+          "Marks_Awarded",
+          "Negative_Penalty",
+        ];
+        const rows = questions.map((q) => {
+          let key = q.correctAnswer;
+          if (q.type === "MSQ" && Array.isArray(q.correctAnswer))
+            key = q.correctAnswer.join(";");
+          if (q.type === "NAT" && q.correctRange)
+            key = `${q.correctRange.min}-${q.correctRange.max}`;
+          let cand = q.candidateAnswer;
+          if (Array.isArray(cand)) cand = cand.join(";");
+          if (cand === null || cand === undefined) cand = "";
+          return [
+            q.questionNumber,
+            q.section,
+            `"${(q.topic || "").replace(/"/g, '""')}"`,
+            q.type,
+            q.marksWeight,
+            `"${key || ""}"`,
+            `"${cand}"`,
+            q.status,
+            q.marksObtained.toFixed(4),
+            q.negativePenalty.toFixed(4),
+          ].join(",");
+        });
+
+        const csvContent =
+          "data:text/csv;charset=utf-8," +
+          [headers.join(","), ...rows].join("\n");
+        const link = document.createElement("a");
+        link.setAttribute("href", encodeURI(csvContent));
+        link.setAttribute(
+          "download",
+          `GATE_BT_${AppState.examYear}_Marks_Analysis.csv`,
+        );
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
+      function exportJson() {
+        if (!AppState.currentEvaluation) return;
+        const exportData = {
+          meta: {
+            app: "GATE Biotechnology Marks Calculator",
+            examYear: AppState.examYear,
+            paperCode: "BT",
+            generatedAt: new Date().toISOString(),
+          },
+          summary: AppState.currentEvaluation,
+          questions: AppState.questions,
+        };
+        const dataStr =
+          "data:text/json;charset=utf-8," +
+          encodeURIComponent(JSON.stringify(exportData, null, 2));
+        const link = document.createElement("a");
+        link.setAttribute("href", dataStr);
+        link.setAttribute(
+          "download",
+          `GATE_BT_${AppState.examYear}_Result_Data.json`,
+        );
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
+      function runAutomatedTests(verbose) {
+        const logs = [];
+        function assertEqual(actual, expected, testName, tolerance = 1e-6) {
+          const pass = Math.abs(actual - expected) < tolerance;
+          logs.push({ name: testName, pass, actual, expected });
+          return pass;
+        }
+        function assertTrue(condition, testName) {
+          logs.push({
+            name: testName,
+            pass: !!condition,
+            actual: condition,
+            expected: true,
+          });
+          return condition;
+        }
+
+        let t1 = evaluateQuestion({
+          type: "MCQ",
+          marks: 1,
+          correctAnswer: "A",
+          candidateAnswer: "A",
+        });
+        assertEqual(t1.marksObtained, 1.0, "Test 1: MCQ 1-mark correct (+1)");
+
+        let t2 = evaluateQuestion({
+          type: "MCQ",
+          marks: 1,
+          correctAnswer: "A",
+          candidateAnswer: "B",
+        });
+        assertEqual(
+          t2.marksObtained,
+          -1 / 3,
+          "Test 2: MCQ 1-mark incorrect (-1/3)",
+        );
+
+        let t3 = evaluateQuestion({
+          type: "MCQ",
+          marks: 2,
+          correctAnswer: "C",
+          candidateAnswer: "C",
+        });
+        assertEqual(t3.marksObtained, 2.0, "Test 3: MCQ 2-mark correct (+2)");
+
+        let t4 = evaluateQuestion({
+          type: "MCQ",
+          marks: 2,
+          correctAnswer: "C",
+          candidateAnswer: "D",
+        });
+        assertEqual(
+          t4.marksObtained,
+          -2 / 3,
+          "Test 4: MCQ 2-mark incorrect (-2/3)",
+        );
+
+        let t5 = evaluateQuestion({
+          type: "MSQ",
+          marks: 2,
+          correctAnswer: ["A", "C", "D"],
+          candidateAnswer: ["A", "C", "D"],
+        });
+        assertEqual(
+          t5.marksObtained,
+          2.0,
+          "Test 5: MSQ complete selection (+2)",
+        );
+
+        let t6 = evaluateQuestion({
+          type: "MSQ",
+          marks: 2,
+          correctAnswer: ["A", "C", "D"],
+          candidateAnswer: ["A", "C"],
+        });
+        assertEqual(
+          t6.marksObtained,
+          0.0,
+          "Test 6: MSQ partial selection = 0 marks (Strict zero partial)",
+        );
+
+        let t7 = evaluateQuestion({
+          type: "MSQ",
+          marks: 2,
+          correctAnswer: ["A", "C", "D"],
+          candidateAnswer: ["A", "B", "C", "D"],
+        });
+        assertEqual(
+          t7.marksObtained,
+          0.0,
+          "Test 7: MSQ extra incorrect option = 0 marks",
+        );
+
+        let t8 = evaluateQuestion({
+          type: "NAT",
+          marks: 2,
+          correctRange: { min: 0.69, max: 0.71 },
+          candidateAnswer: 0.7,
+        });
+        assertEqual(
+          t8.marksObtained,
+          2.0,
+          "Test 8: NAT inside range [0.69, 0.71] = +2 marks",
+        );
+
+        let t9 = evaluateQuestion({
+          type: "NAT",
+          marks: 2,
+          correctRange: { min: 0.69, max: 0.71 },
+          candidateAnswer: 0.75,
+        });
+        assertEqual(
+          t9.marksObtained,
+          0.0,
+          "Test 9: NAT outside range = 0 marks",
+        );
+
+        let t10 = evaluateQuestion({
+          type: "MCQ",
+          marks: 1,
+          correctAnswer: "A",
+          candidateAnswer: null,
+        });
+        assertEqual(
+          t10.marksObtained,
+          0.0,
+          "Test 10: Unattempted question = 0 marks",
+        );
+
+        if (verbose) {
+          const container = document.getElementById("test-results-container");
+          if (container) {
+            const allPass = logs.every((l) => l.pass);
+            container.innerHTML =
+              `<div style="color:${allPass ? "#34d399" : "#f87171"}; font-weight:700; margin-bottom:0.75rem;">
+            ${allPass ? "✓ ALL 10 AUTOMATED UNIT TESTS PASSED SUCCESSFULLY!" : "⚠ SOME TESTS FAILED"}
+          </div>` +
+              logs
+                .map(
+                  (l) => `<div>[${l.pass ? "PASS" : "FAIL"}] ${l.name}</div>`,
+                )
+                .join("");
+          }
+        }
+        return logs;
+      }
+
+      function escapeHtml(text) {
+        if (text === null || text === undefined) return "";
+        return String(text)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      document.addEventListener("DOMContentLoaded", initApp);
+    </script>
+  </body>
+</html>
